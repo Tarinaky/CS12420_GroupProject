@@ -1,6 +1,7 @@
 OBJ := 
 SRC := $(OBJ:.class=.java)
 
+#This is a comment.
 
 %.class: %.java
 	javac -g $<
