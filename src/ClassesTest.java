@@ -27,4 +27,11 @@ public class ClassesTest extends TestCase {
 		testClasses.get_field("TestField-1");
 		testClasses.rm_field("TestField-1");
 	}
+
+	public void testRenameField() {
+		//Add a field, rename it then remove it.
+		testClasses.add_field(new Field("TestField-1") );
+		testClasses.get_field("TestField-1").rename("TestField-2",testClasses);
+		testClasses.rm_field("TestField-2");
+	}
 }
