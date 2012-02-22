@@ -1,4 +1,4 @@
-OBJ := 
+OBJ := Design.class Classes.class Link.class Field.class AccessModifier.class Method.class
 SRC := $(OBJ:.class=.java)
 
 
