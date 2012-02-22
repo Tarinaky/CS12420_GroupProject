@@ -49,6 +49,4 @@ public class Field {
 		return this.type;
 	}
 
-
-
 }
