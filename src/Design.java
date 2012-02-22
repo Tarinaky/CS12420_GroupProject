@@ -23,9 +23,10 @@ public class Design {
 		 */
 	}
 
-	public void get_class(String label) {
+	public Classes get_class(String label) {
 		/**
 		 * Return the class associated with a given label.
 		 */
+		return new Classes("Dummy");
 	}
 }

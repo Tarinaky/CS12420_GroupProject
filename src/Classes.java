@@ -18,4 +18,63 @@ public class Classes {
 		comment = new String("");
 		fields = new TreeMap<String,Field>();
 	}
+
+	public void rename(String label, Design design) {
+		/**
+		 * Rename a class and update the design to reflect it.
+		 */
+	}
+
+	public void add_lnk(Link link) {
+		/**
+		 * Add a link to the Class.
+		 */
+	}
+
+	public Link get_lnk(String label) {
+		/**
+		 * Retrieve a Link by its label.
+		 */
+		return new Link("Dummy");
+	}
+
+	public void rm_lnk(String label) {
+		/**
+		 * Remove a link by its label.
+		 */
+	}
+
+	public void set_comment(String comment) {
+		/**
+		 * Set this classes' comment string.
+		 */
+	}
+
+	public String get_comment() {
+		/**
+		 * Return this classes' comment string.
+		 */
+		return new String("");
+	}
+
+	public void add_field(Field field) {
+		/**
+		 * Add a field to this class.
+		 */
+	}
+
+	public Field get_field(String label) {
+		/**
+		 * Retrieve a field by its label.
+		 */
+		return new Field("Dummy");
+	}
+
+	public void rm_field(String label) {
+		/**
+		 * Remove a field by its label.
+		 */
+	}
+
+
 }
