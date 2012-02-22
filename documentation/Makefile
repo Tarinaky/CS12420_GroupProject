@@ -5,13 +5,13 @@ SRC := $(OBJ:.class=.java)
 %.class: %.java
 	javac -g $<
 	
-all: ClassDiagram.png
+all: DataClassDiagram.png
 
 documentation: design.pdf
 
-ClassDiagram.png: ClassDiagram.java
-	javadoc -docletpath /usr/local/lib/UmlGraph.jar -doclet org.umlgraph.doclet.UmlGraph -private ClassDiagram.java
-	dot -Tpng -oClassDiagram.png graph.dot
+DataClassDiagram.png: DataClassDiagram.java
+	javadoc -docletpath /usr/local/lib/UmlGraph.jar -doclet org.umlgraph.doclet.UmlGraph -private DataClassDiagram.java
+	dot -Tpng -oDataClassDiagram.png graph.dot
 	rm -f graph.dot
 
 design.pdf: design.tex UseCase.png ClassDiagram.png
