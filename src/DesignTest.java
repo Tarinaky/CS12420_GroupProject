@@ -18,4 +18,11 @@ public class DesignTest extends TestCase {
 
 		testDesign.rm_class("TestClass1");
 	}
+
+	public void testRenameClass() {
+		//Add a class and then rename it.
+		testDesign.add_class(new Classes("TestClass-1") );
+		testDesign.get_class("TestClass-1").rename("TestClass-2",testDesign);
+		testDesign.rm_class("TestClass-2");
+	}
 }

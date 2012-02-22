@@ -21,7 +21,7 @@ class Classes {
 
 	public Classes(String label) {}
 
-	public void rename(String label) {}
+	public void rename(String label, Design design) {}
 	
 	public Link get_lnk(String label) {}
 	public void add_lnk(Link link) {}
