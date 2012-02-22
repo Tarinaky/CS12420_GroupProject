@@ -8,5 +8,14 @@ public class DesignTest extends TestCase {
 		testDesign = new Design();
 	}
 
-	public testEmpty() {}
+	public void testEmpty() {}
+
+	public void testAddClass() {
+		//Add a new class to the Design and then retrieve it.
+		testDesign.add_class(new Classes("TestClass1") );
+
+		testDesign.get_class("TestClass1");
+
+		testDesign.rm_class("TestClass1");
+	}
 }
