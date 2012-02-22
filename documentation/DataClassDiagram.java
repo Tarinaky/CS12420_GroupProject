@@ -46,9 +46,9 @@ class Field {
 	
 	private AccessModifier accessModifier;
 
-	public Field() {}
+	public Field(String label) {}
 	
-	public void set_label(String label) {}
+	public void rename(String label,Classes classes) {}
 	public void set_am(AccessModifier am) {}
 	public AccessModifier get_am() {}
 
