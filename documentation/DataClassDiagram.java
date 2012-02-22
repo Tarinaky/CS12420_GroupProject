@@ -24,7 +24,7 @@ class Classes {
 	public void rename(String label) {}
 	
 	public Link get_lnk(String label) {}
-	public void add_lnk(String label, Link link) {}
+	public void add_lnk(Link link) {}
 	public void rm_lnk(String label) {}
 
 	public void set_comment(String comment) {}
@@ -65,6 +65,8 @@ class AccessModifier {
 	public int PROTECTED = 1;
 	public int PRIVATE = -1;
 	public int mode;
+
+	public AccessModifier(int i) {}
 }
 
 /**
@@ -74,8 +76,9 @@ class Link {
 	private String label;
 	
 	private int cardinalityA, cardinalityB;
-	public int CARDINALITY_ONE = 1;
-	public int CARDINALITY_MANY = -1;
+	public static int CARDINALITY_ONE = 1;
+	public static int CARDINALITY_MANY = -1;
+	public static int INHERITANCE = 0;
 
 	private Classes classA, classB;
 
@@ -111,5 +114,7 @@ class Method extends Field {
 	
 	public void set_parameters(List<Field> parameters) {}
 	public List<Field> get_parameters() {}
+
+	public Method() {}
 }
 
