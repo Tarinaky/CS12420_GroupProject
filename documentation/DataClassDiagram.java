@@ -82,9 +82,9 @@ class Link {
 
 	private Classes classA, classB;
 
-	public Link(String label,Classes classA, Classes classB) {}
+	public Link(String label) {}
 
-	public void set_label(String label) {}
+	public void rename(String label) {}
 
 	public void set_cardinality(int A, int B) {}
 	public int get_cardinalityA() {}

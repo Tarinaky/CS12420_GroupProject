@@ -10,7 +10,11 @@ public class ClassesTest extends TestCase {
 
 	public void testAddLink() {
 		//Add a link to the class, retrieve it and remove it.
-		testClasses.add_lnk(new Link("TestLink-1") );
+		Classes classB = new Classes("classB");
+		Link link = new Link("link");
+		testClasses.add_lnk(link);
+		classB.add_lnk(link);
+
 		testClasses.get_lnk("TestLink-1");
 		testClasses.rm_lnk("TestLink-1");
 	}
