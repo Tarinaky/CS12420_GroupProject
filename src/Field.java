@@ -22,27 +22,27 @@ public class Field {
 		 */
 	}
 
-	public void set_am(int am) {
+	public void setAccessModifier(int am) {
 		/**
 		 * Set this field's access modifier.
 		 */
 	}
 
-	public AccessModifier get_am() {
+	public AccessModifier getAccessModifier() {
 		/**
 		 * Fetch this field's access modifier.
 		 */
 		return new AccessModifier();
 	}
 
-	public void set_type(String type) {
+	public void setType(String type) {
 		/**
 		 * Change the field's type.
 		 */
 		this.type = type;
 	}
 
-	public String get_type() {
+	public String getType() {
 		/**
 		 * Get the field's type.
 		 */

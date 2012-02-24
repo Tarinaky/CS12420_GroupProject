@@ -25,7 +25,7 @@ public class Link {
 		 */
 	}
 
-	public void set_cardinality(int a,int b) {
+	public void setCardinality(int a,int b) {
 		/**
 		 * Change a link's cardinality.
 		 */
@@ -33,28 +33,28 @@ public class Link {
 		cardinalityB = b;
 	}
 
-	public int get_cardinalityA() {
+	public int getCardinalityA() {
 		/**
 		 * Retrieve the cardinality from one end of the relationship.
 		 */
 		return 1;
 	}
 
-	public int get_cardinalityB() {
+	public int getCardinalityB() {
 		/**
 		 * Retrive the cardinality from the other end of the relationship.
 		 */
 		return 1;
 	}
 
-	public void set_classA(Classes classA) {
+	public void setClassA(Classes classA) {
 		/**
 		 * Change the class at one end of the relationship.
 		 */
 		this.classA = classA;
 	}
 
-	public void set_classB(Classes classB) {
+	public void setClassB(Classes classB) {
 		/**
 		 * Change the class at one end of the relationship.
 		 */

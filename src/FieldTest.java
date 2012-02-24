@@ -9,14 +9,14 @@ public class FieldTest extends TestCase {
 	}
 
 	public void testAccessModifiers() {
-		testField.set_am(AccessModifier.PUBLIC);
-		testField.set_am(AccessModifier.PROTECTED);
-		testField.set_am(AccessModifier.PRIVATE);
-		testField.get_am();
+		testField.setAccessModifier(AccessModifier.PUBLIC);
+		testField.setAccessModifier(AccessModifier.PROTECTED);
+		testField.setAccessModifier(AccessModifier.PRIVATE);
+		testField.getAccessModifier();
 	}
 
 	public void testType() {
-		testField.set_type("Foo");
-		testField.get_type();
+		testField.setType("Foo");
+		testField.getType();
 	}
 }

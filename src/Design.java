@@ -11,19 +11,19 @@ public class Design {
 
 	}
 
-	public void add_class(Classes add) {
+	public void addClass(Classes add) {
 		/**
 		 * Add a class to the database.
 		 */
 	}
 
-	public void rm_class(String label) {
+	public void removeClass(String label) {
 		/**
 		 * Remove a class from the database by its label.
 		 */
 	}
 
-	public Classes get_class(String label) {
+	public Classes getClass(String label) {
 		/**
 		 * Return the class associated with a given label.
 		 */

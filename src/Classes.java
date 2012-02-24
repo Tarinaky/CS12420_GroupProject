@@ -25,52 +25,52 @@ public class Classes {
 		 */
 	}
 
-	public void add_lnk(Link link) {
+	public void addLink(Link link) {
 		/**
 		 * Add a link to the Class.
 		 */
 	}
 
-	public Link get_lnk(String label) {
+	public Link getLink(String label) {
 		/**
 		 * Retrieve a Link by its label.
 		 */
 		return new Link("Dummy");
 	}
 
-	public void rm_lnk(String label) {
+	public void removeLink(String label) {
 		/**
 		 * Remove a link by its label.
 		 */
 	}
 
-	public void set_comment(String comment) {
+	public void setComment(String comment) {
 		/**
 		 * Set this classes' comment string.
 		 */
 	}
 
-	public String get_comment() {
+	public String getComment() {
 		/**
 		 * Return this classes' comment string.
 		 */
 		return new String("");
 	}
 
-	public void add_field(Field field) {
+	public void addField(Field field) {
 		/**
 		 * Add a field to this class.
 		 */
 	}
 
-	public Field get_field(String label) {
+	public Field getField(String label) {
 		/**
 		 * Retrieve a field by its label.
 		 */
 		return new Field("Dummy");
 	}
 
-	public void rm_field(String label) {
+	public void removeField(String label) {
 		/**
 		 * Remove a field by its label.
 		 */

@@ -6,8 +6,8 @@ public class LinkTest extends TestCase {
 
 	public void setUp() {
 		testLink = new Link("test");
-		(new Classes("classA") ).add_lnk(testLink);
-		(new Classes("classB") ).add_lnk(testLink);
+		(new Classes("classA") ).addLink(testLink);
+		(new Classes("classB") ).addLink(testLink);
 	}
 
 	public void testRename() {
@@ -15,14 +15,14 @@ public class LinkTest extends TestCase {
 	}
 
 	public void testCardinality() {
-		testLink.set_cardinality(Link.CARDINALITY_ONE,Link.CARDINALITY_MANY);
-		testLink.get_cardinalityA();
-		testLink.get_cardinalityB();
+		testLink.setCardinality(Link.CARDINALITY_ONE,Link.CARDINALITY_MANY);
+		testLink.getCardinalityA();
+		testLink.getCardinalityB();
 	}
 
 	public void testSetClasses() {
-		testLink.set_classA(new Classes("testC") );
-		testLink.set_classB(new Classes("testD") );
+		testLink.setClassA(new Classes("testC") );
+		testLink.setClassB(new Classes("testD") );
 	}
 
 }
