@@ -49,6 +49,7 @@ public class Classes {
 		/**
 		 * Remove a link by its label.
 		 */
+		links.remove(label);
 	}
 
 	public void setComment(String comment) {

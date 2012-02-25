@@ -23,6 +23,15 @@ public class Link {
 		/**
 		 * Change a link's name.
 		 */
+		String oldLabel = this.label;
+		this.label = label;
+		
+		classA.removeLink(oldLabel);
+		classA.addLink(this);
+		
+		classB.removeLink(oldLabel);
+		classB.addLink(this);
+		
 	}
 
 	public void setCardinality(int a,int b) {
@@ -37,14 +46,14 @@ public class Link {
 		/**
 		 * Retrieve the cardinality from one end of the relationship.
 		 */
-		return 1;
+		return cardinalityA;
 	}
 
 	public int getCardinalityB() {
 		/**
 		 * Retrive the cardinality from the other end of the relationship.
 		 */
-		return 1;
+		return cardinalityB;
 	}
 
 	public void setClassA(Classes classA) {
