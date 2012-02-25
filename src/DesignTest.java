@@ -8,8 +8,6 @@ public class DesignTest extends TestCase {
 		testDesign = new Design();
 	}
 
-	public void testEmpty() {}
-
 	public void testAddClass() {
 		//Add a new class to the Design and then retrieve it.
 		
