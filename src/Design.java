@@ -15,6 +15,9 @@ public class Design {
 		/**
 		 * Add a class to the database.
 		 */
+		
+		String key = add.getLabel();
+		classes.put(key, add);
 	}
 
 	public void removeClass(String label) {
@@ -27,6 +30,6 @@ public class Design {
 		/**
 		 * Return the class associated with a given label.
 		 */
-		return new Classes("Dummy");
+		return classes.get(label);
 	}
 }

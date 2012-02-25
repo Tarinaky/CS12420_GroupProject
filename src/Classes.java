@@ -75,6 +75,15 @@ public class Classes {
 		 * Remove a field by its label.
 		 */
 	}
+	
+	public String getLabel() {
+		/**
+		 * Return a copy of the string associated with this class.
+		 * This should -not- be used to rename the class directly, hence the return of a copy.
+		 */
+		return new String(label);
+		
+	}
 
 
 }
