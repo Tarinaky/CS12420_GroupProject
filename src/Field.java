@@ -60,7 +60,7 @@ public class Field {
 		/**
 		 * Returns a copy of this field's label. This cannot be used for insitu alteration.
 		 */
-		return new String(label);
+		return label;
 	}
 
 }

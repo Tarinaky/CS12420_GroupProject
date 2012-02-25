@@ -91,9 +91,11 @@ public class Classes {
 	public String getLabel() {
 		/**
 		 * Return a copy of the string associated with this class.
-		 * This should -not- be used to rename the class directly, hence the return of a copy.
+		 * 
+		 * Edit: I just learned that Java's String is immutable, making the use of a
+		 * copy-ctor superfluous.
 		 */
-		return new String(label);
+		return label;
 		
 	}
 

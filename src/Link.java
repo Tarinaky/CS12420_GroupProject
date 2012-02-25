@@ -87,9 +87,9 @@ public class Link {
 	public String getLabel() {
 		/**
 		 * Returns a copy of this link's label.
-		 * This should not be used to rename a link, hence the return of a copy only.
+		 * Edit: Just learned that String is immutable. No need for a copy.
 		 */
-		return new String(label);
+		return label;
 	}
 
 
