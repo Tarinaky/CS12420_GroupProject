@@ -69,19 +69,22 @@ public class Classes {
 		/**
 		 * Add a field to this class.
 		 */
+		String label = field.getLabel();
+		fields.put(label, field);
 	}
 
 	public Field getField(String label) {
 		/**
-		 * Retrieve a field by its label.
+		 * Retrieve a field by its label. Returns null if no such field exists.
 		 */
-		return new Field("Dummy");
+		return fields.get(label);
 	}
 
 	public void removeField(String label) {
 		/**
 		 * Remove a field by its label.
 		 */
+		fields.remove(label);
 	}
 	
 	public String getLabel() {
