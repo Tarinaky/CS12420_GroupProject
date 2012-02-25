@@ -23,16 +23,16 @@ class Classes {
 
 	public void rename(String label, Design design) {}
 	
-	public Link get_lnk(String label) {}
-	public void add_lnk(Link link) {}
-	public void rm_lnk(String label) {}
+	public Link getLink(String label) {}
+	public void addLink(Link link) {}
+	public void removeLink(String label) {}
 
-	public void set_comment(String comment) {}
-	public String get_comment() {}
+	public void setComment(String comment) {}
+	public String getComment() {}
 
-	public Field add_field(String label, Field field) {}
-	public void get_field(String label) {}
-	public void rm_field(String label) {}
+	public Field addField(String label, Field field) {}
+	public void getField(String label) {}
+	public void rmField(String label) {}
 }
 
 /**
@@ -49,11 +49,11 @@ class Field {
 	public Field(String label) {}
 	
 	public void rename(String label,Classes classes) {}
-	public void set_am(AccessModifier am) {}
-	public AccessModifier get_am() {}
+	public void setAccessModifier(AccessModifier am) {}
+	public AccessModifier getAccessModifier() {}
 
-	public void set_type(String type) {}
-	public String get_type() {}
+	public void setType(String type) {}
+	public String getType() {}
 
 }
 
@@ -86,12 +86,12 @@ class Link {
 
 	public void rename(String label) {}
 
-	public void set_cardinality(int A, int B) {}
-	public int get_cardinalityA() {}
-	public int get_cardinalityB() {}
+	public void setCardinality(int A, int B) {}
+	public int getCardinalityA() {}
+	public int getCardinalityB() {}
 
-	public void set_classA(Classes classA) {}
-	public void set_classB(Classes classB) {}
+	public void setClassA(Classes classA) {}
+	public void setClassB(Classes classB) {}
 }
 
 /**
@@ -101,9 +101,9 @@ class Link {
 class Design {
 	private Map<String,Classes> classes;
 
-	public void add_class(Classes classes) {}
-	public void rm_class(String label) {}
-	public Classes get_class(String label) {}
+	public void addClass(Classes classes) {}
+	public void removeClass(String label) {}
+	public Classes getClass(String label) {}
 }
 
 /**
@@ -112,8 +112,8 @@ class Design {
 class Method extends Field {
 	private List<Field> parameters;
 	
-	public void set_parameters(List<Field> parameters) {}
-	public List<Field> get_parameters() {}
+	public void setParameters(List<Field> parameters) {}
+	public List<Field> getParameters() {}
 
 	public Method() {}
 }
