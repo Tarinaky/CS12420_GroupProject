@@ -55,13 +55,14 @@ public class Classes {
 		/**
 		 * Set this classes' comment string.
 		 */
+		this.comment = comment;
 	}
 
 	public String getComment() {
 		/**
 		 * Return this classes' comment string.
 		 */
-		return new String("");
+		return comment;
 	}
 
 	public void addField(Field field) {
