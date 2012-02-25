@@ -23,6 +23,11 @@ public class Classes {
 		/**
 		 * Rename a class and update the design to reflect it.
 		 */
+		String oldLabel = this.label;
+		this.label = label;
+		
+		design.removeClass(oldLabel);
+		design.addClass(this);
 	}
 
 	public void addLink(Link link) {
