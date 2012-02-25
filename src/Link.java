@@ -51,6 +51,12 @@ public class Link {
 		/**
 		 * Change the class at one end of the relationship.
 		 */
+		Classes old = this.classA;
+		
+		if (old != null) {
+			old.removeLink(getLabel() );
+		}
+		
 		this.classA = classA;
 		classA.addLink(this);
 	}
@@ -59,6 +65,12 @@ public class Link {
 		/**
 		 * Change the class at one end of the relationship.
 		 */
+		Classes old = this.classB;
+		
+		if (old != null) {
+			old.removeLink(getLabel() );
+		}
+		
 		this.classB = classB;
 		classB.addLink(this);
 	}
