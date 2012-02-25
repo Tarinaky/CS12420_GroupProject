@@ -11,6 +11,15 @@ public class MethodTest extends TestCase {
 	}
 
 	public void testParameters() {
+		
+		assertTrue(testMethod.getParameters().isEmpty() );
+		
+		Field testField = new Field("testField");
+					
+		testMethod.getParameters().add(testField);
+		assertTrue(testMethod.getParameters().contains(testField) );
+		
 		testMethod.getParameters().add(new Field("arg1") );
+		
 	}
 }
