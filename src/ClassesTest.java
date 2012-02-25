@@ -47,9 +47,14 @@ public class ClassesTest extends TestCase {
 	}
 
 	public void testRenameField() {
-		//Add a field, rename it then remove it.
-		testClasses.addField(new Field("TestField-1") );
-		testClasses.getField("TestField-1").rename("TestField-2",testClasses);
-		testClasses.removeField("TestField-2");
+		//Add a field, rename it then verify it.
+		
+		Field testField = new Field("testField");
+		
+		testClasses.addField(testField);
+		testClasses.getField("testField").rename("renamedField", testClasses);
+		
+		assertTrue(testClasses.getField("testField") == null);
+		assertTrue(testClasses.getField("renamedField") == testField);
 	}
 }
