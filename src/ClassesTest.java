@@ -22,8 +22,11 @@ public class ClassesTest extends TestCase {
 
 	public void testComments() {
 		//Add a comment, then retrieve it.
-		testClasses.setComment("Test comment.");
-		testClasses.getComment();
+		String testComment = new String();
+		
+		testClasses.setComment(testComment);
+		assertTrue(testClasses.getComment() == testComment);
+		
 	}
 
 	public void testAddField() {
