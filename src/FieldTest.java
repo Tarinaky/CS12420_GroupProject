@@ -9,14 +9,13 @@ public class FieldTest extends TestCase {
 	}
 
 	public void testAccessModifiers() {
-		testField.setAccessModifier(AccessModifier.PUBLIC);
-		testField.setAccessModifier(AccessModifier.PROTECTED);
 		testField.setAccessModifier(AccessModifier.PRIVATE);
-		testField.getAccessModifier();
+		assertTrue(testField.getAccessModifier().mode == AccessModifier.PRIVATE);
 	}
 
 	public void testType() {
-		testField.setType("Foo");
-		testField.getType();
+		String testString = new String();
+		testField.setType(testString);
+		assertTrue(testField.getType() == testString);
 	}
 }
