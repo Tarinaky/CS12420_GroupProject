@@ -12,10 +12,14 @@ public class DesignTest extends TestCase {
 
 	public void testAddClass() {
 		//Add a new class to the Design and then retrieve it.
-		testDesign.addClass(new Classes("TestClass-1") );
+		
+		Classes testClass = new Classes("testClass");
 
-		testDesign.getClass("TestClass1");
-
+		testDesign.addClass(testClass);
+		Classes retrievedClass = testDesign.getClass("testClass");
+		
+		assertTrue(testClass == retrievedClass);
+		
 		testDesign.removeClass("TestClass1");
 	}
 
