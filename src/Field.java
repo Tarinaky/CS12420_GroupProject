@@ -48,5 +48,12 @@ public class Field {
 		 */
 		return this.type;
 	}
+	
+	public String getLabel() {
+		/**
+		 * Returns a copy of this field's label. This cannot be used for insitu alteration.
+		 */
+		return new String(label);
+	}
 
 }
