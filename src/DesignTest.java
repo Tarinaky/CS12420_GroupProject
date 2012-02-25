@@ -28,8 +28,15 @@ public class DesignTest extends TestCase {
 
 	public void testRenameClass() {
 		//Add a class and then rename it.
-		testDesign.addClass(new Classes("TestClass-1") );
+		/*testDesign.addClass(new Classes("TestClass-1") );
 		testDesign.getClass("TestClass-1").rename("TestClass-2",testDesign);
-		testDesign.removeClass("TestClass-2");
+		testDesign.removeClass("TestClass-2");*/
+		Classes testClass = new Classes("testClass");
+		
+		testDesign.addClass(testClass);
+		testDesign.getClass("testClass").rename("renamedClass", testDesign);
+		
+		assertTrue(testDesign.getClass("testClass") == null);
+		assertTrue(testDesign.getClass("renamedClass") == testClass);
 	}
 }
