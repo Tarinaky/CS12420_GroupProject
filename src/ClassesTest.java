@@ -31,9 +31,19 @@ public class ClassesTest extends TestCase {
 
 	public void testAddField() {
 		//Add a field, retrieve and delete it.
-		testClasses.addField(new Field("TestField-1") );
-		testClasses.getField("TestField-1");
-		testClasses.removeField("TestField-1");
+		Field testField = new Field("testField");
+		
+		testClasses.addField(testField);
+		
+		assertTrue(testClasses.getField("testField") == testField);
+		
+	}
+	
+	public void testRemoveField() {
+		testClasses.addField(new Field("testField") );
+		testClasses.removeField("testField");
+		
+		assertTrue(testClasses.getField("testField") == null);
 	}
 
 	public void testRenameField() {
