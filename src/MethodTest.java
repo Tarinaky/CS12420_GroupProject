@@ -11,7 +11,6 @@ public class MethodTest extends TestCase {
 	}
 
 	public void testParameters() {
-		testMethod.setParameters(new ArrayList<Field>() );
 		testMethod.getParameters().add(new Field("arg1") );
 	}
 }
