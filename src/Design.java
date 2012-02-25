@@ -24,6 +24,7 @@ public class Design {
 		/**
 		 * Remove a class from the database by its label.
 		 */
+		classes.remove(label);
 	}
 
 	public Classes getClass(String label) {
