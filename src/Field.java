@@ -31,13 +31,15 @@ public class Field {
 		/**
 		 * Set this field's access modifier.
 		 */
+		this.accessModifier.mode = am;
 	}
 
-	public AccessModifier getAccessModifier() {
+	public int getAccessModifier() {
 		/**
-		 * Fetch this field's access modifier.
+		 * Fetch this field's access modifier. 
+		 * Cannot be used for in-situ modification as it is returned by value.
 		 */
-		return new AccessModifier();
+		return accessModifier.mode;
 	}
 
 	public void setType(String type) {

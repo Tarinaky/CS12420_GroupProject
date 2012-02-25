@@ -10,7 +10,7 @@ public class FieldTest extends TestCase {
 
 	public void testAccessModifiers() {
 		testField.setAccessModifier(AccessModifier.PRIVATE);
-		assertTrue(testField.getAccessModifier().mode == AccessModifier.PRIVATE);
+		assertTrue(testField.getAccessModifier() == AccessModifier.PRIVATE);
 	}
 
 	public void testType() {
