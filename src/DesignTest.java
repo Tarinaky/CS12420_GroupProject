@@ -20,7 +20,9 @@ public class DesignTest extends TestCase {
 		
 		assertTrue(testClass == retrievedClass);
 		
-		testDesign.removeClass("TestClass1");
+		testDesign.removeClass("testClass");
+		
+		assertTrue(testDesign.getClass("testClass") == null);
 	}
 
 	public void testRenameClass() {
