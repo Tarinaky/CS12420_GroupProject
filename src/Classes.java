@@ -34,13 +34,15 @@ public class Classes {
 		/**
 		 * Add a link to the Class.
 		 */
+		String label = link.getLabel();
+		links.put(label, link);
 	}
 
 	public Link getLink(String label) {
 		/**
 		 * Retrieve a Link by its label.
 		 */
-		return new Link("Dummy");
+		return links.get(label);
 	}
 
 	public void removeLink(String label) {

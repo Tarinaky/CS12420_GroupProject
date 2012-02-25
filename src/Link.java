@@ -52,6 +52,7 @@ public class Link {
 		 * Change the class at one end of the relationship.
 		 */
 		this.classA = classA;
+		classA.addLink(this);
 	}
 
 	public void setClassB(Classes classB) {
@@ -59,9 +60,16 @@ public class Link {
 		 * Change the class at one end of the relationship.
 		 */
 		this.classB = classB;
+		classB.addLink(this);
 	}
 
-
+	public String getLabel() {
+		/**
+		 * Returns a copy of this link's label.
+		 * This should not be used to rename a link, hence the return of a copy only.
+		 */
+		return new String(label);
+	}
 
 
 }

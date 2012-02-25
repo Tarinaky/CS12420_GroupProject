@@ -14,9 +14,10 @@ public class ClassesTest extends TestCase {
 		Link link = new Link("link");
 		
 		link.setClassA(testClasses);
-		link.setClassB(testClasses);
+		link.setClassB(classB);
 		
-		//Assert that both classes point to the same link.
+		assertTrue(testClasses.getLink("link") == link);
+		assertTrue(classB.getLink("link") == link);
 		assertTrue(testClasses.getLink("link") == classB.getLink("link") );
 	}
 
