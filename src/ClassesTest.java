@@ -20,6 +20,23 @@ public class ClassesTest extends TestCase {
 		assertTrue(classB.getLink("link") == link);
 		assertTrue(testClasses.getLink("link") == classB.getLink("link") );
 	}
+	
+	public void testRenameLink() {
+		//Rename a link and verify the change.
+		Link link = new Link("link");
+		Classes classB = new Classes("classB");
+		
+		link.setClassA(testClasses);
+		link.setClassB(classB);
+		
+		link.rename("renamedLink");
+		
+		assertTrue(testClasses.getLink("link") == null);
+		assertTrue(classB.getLink("link") == null);
+		assertTrue(testClasses.getLink("renamedLink") == link);
+		assertTrue(classB.getLink("renamedLink") == link);
+		
+	}
 
 	public void testComments() {
 		//Add a comment, then retrieve it.
