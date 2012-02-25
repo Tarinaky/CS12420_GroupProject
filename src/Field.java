@@ -20,6 +20,11 @@ public class Field {
 		/**
 		 * Rename the field, and then update classes to reflect the new name.
 		 */
+		String oldLabel = this.label;
+		this.label = label;
+		
+		classes.removeField(oldLabel);
+		classes.addField(this);
 	}
 
 	public void setAccessModifier(int am) {
