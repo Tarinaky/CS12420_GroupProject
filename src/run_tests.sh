@@ -4,15 +4,20 @@ error=0
 
 
 junit() {
-	for file in *Test.java
+	for file in $1/*Test.java
 	do
+		#if [ $file=$1/*Test.java ]
+		#then
+		#	continue;
+		#fi
 		compileError=0
 		echo " * Compiling ${file}."
 		javac -cp .:/usr/lib/junit.jar ${file} || compileError=1
 		if [ $compileError -eq 0 ]
 		then
 			echo " * Running tests, ${file}."
-			java -cp .:/usr/lib/junit.jar junit.textui.TestRunner ${file/.java/} || error=1
+			file=${file/$1\//}
+			java -cp .:/usr/lib/junit.jar junit.textui.TestRunner $1.${file/.java/} || error=1
 		else
 			error=1
 		fi
@@ -26,16 +31,13 @@ recurse() {
 		if [ -d ${file} ]
 		then
 			echo " Recursing into package ${file}."
-			cd ${file}
-			recurse
-			junit
-			cd ..
+			junit ${file}
 		fi
 	done
 }
 
 recurse
-junit
+junit .
 
 
 if [ $error -eq 1 ]
