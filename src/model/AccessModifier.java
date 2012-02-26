@@ -1,3 +1,4 @@
+package model;
 public class AccessModifier {
 	/**
 	 * Class representing standard java access modifiers.

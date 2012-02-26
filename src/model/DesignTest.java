@@ -1,3 +1,4 @@
+package model;
 import junit.framework.*;
 import junit.framework.Assert.*;
 

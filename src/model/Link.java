@@ -1,3 +1,4 @@
+package model;
 public class Link {
 	/**
 	 * Describes a relationship between two classes.
