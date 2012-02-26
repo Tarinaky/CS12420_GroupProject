@@ -3,7 +3,7 @@
 error=0
 
 
-test() {
+junit() {
 	for file in *Test.java
 	do
 		compileError=0
@@ -18,23 +18,27 @@ test() {
 		fi
 	done
 
-	if [ $error -eq 1 ]
-	then 
-		exit 1
-	fi
 }
 
 recurse() {
 	for file in *
 	do
-		if [ -d $(file) ]
+		if [ -d ${file} ]
 		then
-			cd $(file)
-			recurse()
-			test()
+			echo " Recursing into package ${file}."
+			cd ${file}
+			recurse
+			junit
 			cd ..
 		fi
 	done
 }
 
-recurse()
+recurse
+junit
+
+
+if [ $error -eq 1 ]
+then 
+	exit 1
+fi
