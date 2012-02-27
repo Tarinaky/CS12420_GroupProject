@@ -15,8 +15,9 @@ public class DesignTest extends TestCase {
 		testDesign.getClass("testClass").addField(new Field("testField"));
 		
 		testDesign.saveTo("testSave.ser");
-		
 		testDesign = Design.loadFrom("testSave.ser");
+		
+		assertTrue(testDesign.getClass("testClass").getField("testField") != null);
 	}
 
 	public void testAddClass() {
