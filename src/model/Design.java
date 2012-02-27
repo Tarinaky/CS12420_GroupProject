@@ -34,4 +34,12 @@ public class Design {
 		 */
 		return classes.get(label);
 	}
+	
+	public Map<String,Classes> getAllClasses()
+	{
+		/**
+		 * Return tree map of all classes.
+		 */
+		return classes;
+	}
 }
