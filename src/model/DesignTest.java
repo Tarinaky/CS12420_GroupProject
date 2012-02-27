@@ -8,6 +8,16 @@ public class DesignTest extends TestCase {
 	public void setUp() {
 		testDesign = new Design();
 	}
+	
+	public void testWriteLoad() throws Exception {
+		//Serializes a dummy Design to file, and then deserializes it.
+		testDesign.addClass(new Classes("testClass"));
+		testDesign.getClass("testClass").addField(new Field("testField"));
+		
+		testDesign.saveTo("testSave.ser");
+		
+		testDesign = Design.loadFrom("testSave.ser");
+	}
 
 	public void testAddClass() {
 		//Add a new class to the Design and then retrieve it.

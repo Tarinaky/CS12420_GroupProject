@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import java.io.*;
 
 public class Design implements java.io.Serializable {
 	/**
@@ -42,5 +43,20 @@ public class Design implements java.io.Serializable {
 		 * Return tree map of all classes.
 		 */
 		return classes;
+	}
+	
+	public void saveTo(String filename) throws IOException {
+		/**
+		 * Serialize the Design to a file.
+		 */
+		ObjectOutputStream outputStream = new ObjectOutputStream(new FileOutputStream(filename) );
+		outputStream.writeObject(this);
+		outputStream.close();		
+	}
+	
+	public static Design loadFrom(String filename) throws IOException, ClassNotFoundException {
+		ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream(filename) );
+		Design loaded = (Design)inputStream.readObject();
+		return loaded;
 	}
 }
