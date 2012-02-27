@@ -1,7 +1,7 @@
 package model;
 import java.util.*;
 
-public class Design {
+public class Design implements java.io.Serializable {
 	/**
 	 * Design is a class describing all of the backend data for a class diagram.
 	 */

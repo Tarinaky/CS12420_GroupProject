@@ -1,5 +1,5 @@
 package model;
-public class Link {
+public class Link implements java.io.Serializable {
 	/**
 	 * Describes a relationship between two classes.
 	 */

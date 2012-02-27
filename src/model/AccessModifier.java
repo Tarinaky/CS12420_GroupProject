@@ -1,5 +1,5 @@
 package model;
-public class AccessModifier {
+public class AccessModifier implements java.io.Serializable {
 	/**
 	 * Class representing standard java access modifiers.
 	 */

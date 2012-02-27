@@ -1,7 +1,7 @@
 package model;
 import java.util.*;
 
-public class Method extends Field {
+public class Method extends Field implements java.io.Serializable {
 	/**
 	 * This class is the special case of a field that is a method.
 	 * Method's return type is stored as the type of field (since it expands to the same type during execution). This leaves the parameters/arguments list as the only real difference.

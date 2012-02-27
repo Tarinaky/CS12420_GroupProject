@@ -2,7 +2,7 @@ package model;
 import java.util.*;
 import java.awt.*;
 
-public class Classes {
+public class Classes implements java.io.Serializable {
 	/**
 	 * Classes contains data relating to a single class within a class diagram. It holds pointers to all relationships or 'links' associated to the class and also contains miscilaneous 'Fields' for Methods and Primative types.
 	 */

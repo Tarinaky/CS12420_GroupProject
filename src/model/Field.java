@@ -1,5 +1,5 @@
 package model;
-public class Field {
+public class Field implements java.io.Serializable {
 	/**
 	 * Stores information about a (non-Class) Field in a class.
 	 */
