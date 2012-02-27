@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 import model.*;
 
 public class GraphicalPanel extends JLayeredPane{
 	
 	private Design design = new Design();
-	private Map<String,Classes> classes = design.getAllClasses();
+	private Collection<Classes> classes = design.getAllClasses();
 
 	
 	GraphicalPanel()
@@ -29,17 +28,22 @@ public class GraphicalPanel extends JLayeredPane{
 	
 	public void drawClasses()
 	{
-		//obtain Iterator for all classes
-	    Iterator<Classes> itr = classes.values().iterator();
-	   	while(itr.hasNext())
+	   	for(Classes theClass: classes)
 	   	{
-			JLabel drawnClass = drawClass(itr.next());
+			JLabel drawnClass = drawClass(theClass);
 			this.add(drawnClass, 3);	
 	   	}
 	}
 	
+	private String getClassesMethodsHTML(Classes theClass)
+	{
+		return "";
+	}
+	
     private JLabel drawClass(Classes theClass) {
-		JLabel label = new JLabel("<html><div style=\"text-align: center; width:102px;\">+" + theClass.getLabel() + "</div><p>Testing<p>lol</html>");
+    	String labelHtml = "<html><div style=\"text-align: center; width:102px;\">+"
+    						+ theClass.getLabel() + "</div>";
+		JLabel label = new JLabel(labelHtml + "</html>");
 		label.setVerticalAlignment(JLabel.TOP);
 		label.setOpaque(true);
 		label.setBackground(Color.white);

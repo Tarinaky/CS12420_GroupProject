@@ -37,12 +37,12 @@ public class Design implements java.io.Serializable {
 		return classes.get(label);
 	}
 	
-	public Map<String,Classes> getAllClasses()
+	public Collection<Classes> getAllClasses()
 	{
 		/**
 		 * Return tree map of all classes.
 		 */
-		return classes;
+		return classes.values();
 	}
 	
 	public void saveTo(String filename) throws IOException {
