@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import java.awt.*;
 
 public class Classes {
 	/**
@@ -10,6 +11,15 @@ public class Classes {
 	private Map<String,Link> links;
 	private String comment;
 	private Map<String,Field> fields;
+	private Point position; //The position of the class in the graphical panel
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
 
 	public Classes(String label) {
 		/** Ctor creating a class with a given String label. The label is used to identify the Class within the design - each must be unique.
@@ -18,6 +28,7 @@ public class Classes {
 		links = new TreeMap<String,Link>();
 		comment = new String("");
 		fields = new TreeMap<String,Field>();
+		position = new Point(50, 50);
 	}
 
 	public void rename(String label, Design design) {

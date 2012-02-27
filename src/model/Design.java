@@ -12,13 +12,14 @@ public class Design {
 
 	}
 
-	public void addClass(Classes add) {
+	public Classes addClass(Classes add) {
 		/**
 		 * Add a class to the database.
 		 */
 		
 		String key = add.getLabel();
 		classes.put(key, add);
+		return add;
 	}
 
 	public void removeClass(String label) {

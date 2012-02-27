@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Iterator;
 import java.util.Map;
 
 import model.*;
@@ -12,6 +13,8 @@ public class GraphicalPanel extends JLayeredPane{
 	
 	GraphicalPanel()
 	{
+		design.addClass(new Classes("Tstings")).setPosition(new Point(400,100));
+		design.addClass(new Classes("Better"));
 		this.setSize(900, 600);
 		this.setPreferredSize(new Dimension(900, 600));
 		this.setBackground(Color.green);
@@ -26,8 +29,13 @@ public class GraphicalPanel extends JLayeredPane{
 	
 	public void drawClasses()
 	{
-		JLabel drawnClass = drawClass(new Classes("Testing"));
-		this.add(drawnClass, 3);
+		//obtain Iterator for all classes
+	    Iterator<Classes> itr = classes.values().iterator();
+	   	while(itr.hasNext())
+	   	{
+			JLabel drawnClass = drawClass(itr.next());
+			this.add(drawnClass, 3);	
+	   	}
 	}
 	
     private JLabel drawClass(Classes theClass) {
@@ -37,7 +45,7 @@ public class GraphicalPanel extends JLayeredPane{
 		label.setBackground(Color.white);
 		label.setForeground(Color.black);
 		label.setBorder(BorderFactory.createLineBorder(Color.black));
-		label.setBounds(102, 102, 140, 140);
+		label.setBounds(theClass.getPosition().x, theClass.getPosition().y, 140, 140);
 		return label;
     }
 }
