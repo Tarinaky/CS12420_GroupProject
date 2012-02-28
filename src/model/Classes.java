@@ -66,6 +66,10 @@ public class Classes implements java.io.Serializable {
 		links.remove(label);
 	}
 
+	public Collection<Link> getAllLinks() {
+		return links.values();
+	}
+
 	public void setComment(String comment) {
 		/**
 		 * Set this classes' comment string.
@@ -108,6 +112,10 @@ public class Classes implements java.io.Serializable {
 		 */
 		fields.remove(label);
 	}
+
+	public Collection<Field> getAllFields() {
+		return fields.values();
+	}
 	
 	public String getLabel() {
 		/**
@@ -129,12 +137,10 @@ public class Classes implements java.io.Serializable {
 		BufferedWriter outputStream = new BufferedWriter(new FileWriter(file) );
 		//public class <foo>\n
 		outputStream.write("public class "+getLabel());
-		outputStream.newLine();
 		//extends <foo>, <bar>, <baz>, ...
 		exportInheritance(outputStream);
-		outputStream.newLine();
 		//{
-		outputStream.write("{");
+		outputStream.write(" {");
 		outputStream.newLine();
 		//private Collection<V> <foo>
 		exportLinks(outputStream);
@@ -147,8 +153,25 @@ public class Classes implements java.io.Serializable {
 		outputStream.close();
 	}
 
-	private void exportInheritance(Writer outputStream) {
-		/*...*/
+	private void exportInheritance(Writer outputStream) throws IOException {
+		
+		//Find this classes Base Class.
+		//NOTE: In Java a class can only extend 1 class!
+		Classes baseClass = null;
+		for (Link link : getAllLinks() ) {
+			if (link.getClassA() == this) {
+				if (link.getCardinalityA() == Link.INHERITANCE ) {
+					baseClass = link.getClassB();
+					break;
+				}
+			}
+		}
+
+		//If this class has a baseClass, write "extends <foo> else do nothing.
+		if (baseClass != null) {
+			outputStream.write(" extends "+baseClass.getLabel() );
+		}		
+
 	}
 
 	private void exportLinks(Writer outputStream) {

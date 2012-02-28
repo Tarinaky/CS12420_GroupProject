@@ -93,5 +93,13 @@ public class Link implements java.io.Serializable {
 		return label;
 	}
 
+	public Classes getClassA() {
+		return classA;
+	}
+
+	public Classes getClassB() {
+		return classB;
+	}
+
 
 }
