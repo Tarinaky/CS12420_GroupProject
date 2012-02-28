@@ -23,6 +23,11 @@ public class DesignTest extends TestCase {
 	public void testExport() throws Exception {
 		//Writes out a dummy class to dummy.java.
 		testDesign.addClass(new Classes("dummy") );
+		
+		Field dummyField = new Field("dummyField");
+		dummyField.setType("int");
+
+		testDesign.getClass("dummy").addField(dummyField);
 
 		testDesign.exportToFolder(new java.io.File(".") );
 	}
