@@ -59,4 +59,10 @@ public class Design implements java.io.Serializable {
 		Design loaded = (Design)inputStream.readObject();
 		return loaded;
 	}
+
+	public void exportToFolder(File folder) throws IOException {
+		for (Classes classes : getAllClasses() ) {
+			classes.exportToFile(new File(folder,classes.getLabel()+".java") );
+		}
+	}
 }

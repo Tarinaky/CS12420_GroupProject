@@ -2,6 +2,8 @@ package model;
 import java.util.*;
 import java.awt.*;
 
+import java.io.*;
+
 public class Classes implements java.io.Serializable {
 	/**
 	 * Classes contains data relating to a single class within a class diagram. It holds pointers to all relationships or 'links' associated to the class and also contains miscilaneous 'Fields' for Methods and Primative types.
@@ -123,5 +125,38 @@ public class Classes implements java.io.Serializable {
 		return fields.values();
 	}
 
+	public void exportToFile(File file) throws IOException {
+		BufferedWriter outputStream = new BufferedWriter(new FileWriter(file) );
+		//public class <foo>\n
+		outputStream.write("public class "+getLabel());
+		outputStream.newLine();
+		//extends <foo>, <bar>, <baz>, ...
+		exportInheritance(outputStream);
+		outputStream.newLine();
+		//{
+		outputStream.write("{");
+		outputStream.newLine();
+		//private Collection<V> <foo>
+		exportLinks(outputStream);
+		//private V <foo> // public V <foo> (<params>) {/*...*/}
+		exportFields(outputStream);
+		outputStream.write("}");
+		outputStream.newLine();
+
+		outputStream.flush();
+		outputStream.close();
+	}
+
+	private void exportInheritance(Writer outputStream) {
+		/*...*/
+	}
+
+	private void exportLinks(Writer outputStream) {
+		/*...*/
+	}
+
+	private void exportFields(Writer outputStream) {
+		/*...*/
+	}
 
 }

@@ -20,6 +20,13 @@ public class DesignTest extends TestCase {
 		assertTrue(testDesign.getClass("testClass").getField("testField") != null);
 	}
 
+	public void testExport() throws Exception {
+		//Writes out a dummy class to dummy.java.
+		testDesign.addClass(new Classes("dummy") );
+
+		testDesign.exportToFolder(new java.io.File(".") );
+	}
+
 	public void testAddClass() {
 		//Add a new class to the Design and then retrieve it.
 		
