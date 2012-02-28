@@ -25,6 +25,9 @@ public class Method extends Field implements java.io.Serializable {
 	
 	public void addParameter(Field parameter)
 	{
+		/**
+		 * Add a single parameter to this method's current parameter list.
+		 */
 		parameters.add(parameter);
 	}
 

@@ -7,6 +7,14 @@ class Map<K,V> {}
  * @hidden
  */
 class List<T> {}
+/**
+ * @hidden
+ */
+class Point {}
+/**
+ * @hidden
+ */
+class Collection<V> {}
 
 /**
  * @opt all
@@ -18,8 +26,12 @@ class Classes {
 	private Map<String,Link> links;
 	private String comment;
 	private Map<String,Field> fields;
+	private Point position;
 
 	public Classes(String label) {}
+	
+	public Point getPosition() {}
+	public void setPosition(Point position) {}
 
 	public void rename(String label, Design design) {}
 	
@@ -32,7 +44,9 @@ class Classes {
 
 	public Field addField(String label, Field field) {}
 	public void getField(String label) {}
-	public void rmField(String label) {}
+	public void removeField(String label) {}
+	
+	public Collection<Field> getAllFields() {}
 }
 
 /**
@@ -67,6 +81,7 @@ class AccessModifier {
 	public int mode;
 
 	public AccessModifier(int i) {}
+	public AccessModifier() {}
 }
 
 /**
@@ -100,10 +115,20 @@ class Link {
  */
 class Design {
 	private Map<String,Classes> classes;
+	
+	public Design() {}
 
 	public void addClass(Classes classes) {}
 	public void removeClass(String label) {}
 	public Classes getClass(String label) {}
+	
+	public Collection<Classes> getAllClasses() {}
+	
+	public void saveTo(String filename) {}
+	/**
+	 * @stereotype static
+	 */
+	public static Design loadFrom(String filename) {}
 }
 
 /**
@@ -114,6 +139,7 @@ class Method extends Field {
 	
 	public void setParameters(List<Field> parameters) {}
 	public List<Field> getParameters() {}
+	public void addParameter(Field field) {}
 
 	public Method() {}
 }
