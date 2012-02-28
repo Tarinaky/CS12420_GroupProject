@@ -28,11 +28,11 @@ public class Field implements java.io.Serializable {
 		classes.addField(this);
 	}
 
-	public void setAccessModifier(int am) {
+	public void setAccessModifier(int accessModifier) {
 		/**
 		 * Set this field's access modifier.
 		 */
-		this.accessModifier.mode = am;
+		this.accessModifier.mode = accessModifier;
 	}
 
 	public int getAccessModifier() {

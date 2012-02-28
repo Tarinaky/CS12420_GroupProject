@@ -86,6 +86,13 @@ public class Classes implements java.io.Serializable {
 		fields.put(label, field);
 	}
 
+	public void addField(Field field, String type, int accessModifier) {
+		String label = field.getLabel();
+		field.setAccessModifier(accessModifier);
+		field.setType(type);
+		fields.put(label, field);
+	}
+	
 	public Field getField(String label) {
 		/**
 		 * Retrieve a field by its label. Returns null if no such field exists.
@@ -109,6 +116,11 @@ public class Classes implements java.io.Serializable {
 		 */
 		return label;
 		
+	}
+	
+	public Collection<Field> getFields()
+	{
+		return fields.values();
 	}
 
 

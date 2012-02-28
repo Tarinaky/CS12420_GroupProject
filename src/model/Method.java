@@ -22,5 +22,10 @@ public class Method extends Field implements java.io.Serializable {
 		 */
 		return parameters;
 	}
+	
+	public void addParameter(Field parameter)
+	{
+		parameters.add(parameter);
+	}
 
 }
