@@ -174,12 +174,36 @@ public class Classes implements java.io.Serializable {
 
 	}
 
-	private void exportLinks(Writer outputStream) {
-		/*...*/
+	private void exportLinks(BufferedWriter outputStream) throws IOException {
+		for (Link link : getAllLinks() ) {
+			if (link.getCardinalityA() == Link.CARDINALITY_ONE && link.getClassA() == this) {
+				String className = link.getClassB().getLabel();
+				String fieldName = "collectionOf"+className;
+
+				outputStream.write("\tList<"+className+"> fieldName;");
+				outputStream.newLine();
+			}
+		}
+
 	}
 
-	private void exportFields(Writer outputStream) {
-		/*...*/
+	private void exportFields(BufferedWriter outputStream) throws IOException {
+		for (Field field : getAllFields() ) {
+			String type = field.getType();
+			String name = field.getLabel();
+			if (field.getClass() != new Method("").getClass() ) {
+				outputStream.write("\tprivate "+type+" "+name+";");
+				outputStream.newLine();
+			}
+			if (field.getClass() == new Method("").getClass() ) {
+				outputStream.write("\tpublic "+type+" "+name+"(");
+				for (Field parameter : ((Method)field ).getParameters() ) {
+					outputStream.write(parameter.getType()+" "+parameter.getLabel()+",");
+				}
+				outputStream.write(") { /*...*/ }");
+				outputStream.newLine();
+			}
+		}
 	}
 
 }
