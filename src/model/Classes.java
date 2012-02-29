@@ -176,7 +176,10 @@ public class Classes implements java.io.Serializable {
 
 	private void exportLinks(BufferedWriter outputStream) throws IOException {
 		for (Link link : getAllLinks() ) {
-			if (link.getCardinalityA() == Link.CARDINALITY_ONE && link.getClassA() == this) {
+			if (link.getCardinalityA() == Link.CARDINALITY_ONE && 
+					link.getClassA() == this &&
+					link.getCardinalityB() == Link.CARDINALITY_MANY
+					) {
 				String className = link.getClassB().getLabel();
 				String fieldName = "collectionOf"+className;
 
