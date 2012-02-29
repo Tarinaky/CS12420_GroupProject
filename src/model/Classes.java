@@ -197,9 +197,19 @@ public class Classes implements java.io.Serializable {
 			}
 			if (field.getClass() == new Method("").getClass() ) {
 				outputStream.write("\tpublic "+type+" "+name+"(");
-				for (Field parameter : ((Method)field ).getParameters() ) {
-					outputStream.write(parameter.getType()+" "+parameter.getLabel()+",");
+				if (!(((Method)field).getParameters().isEmpty() ) ) {
+					Iterator it = ((Method)field).getParameters().iterator();
+					while (it.hasNext()) {
+						Field param = (Field)it.next();
+						outputStream.write(param.getType()+" "+param.getLabel()+",");
+					}
+					Field param = (Field)it.next();
+					outputStream.write(param.getType()+" "+param.getLabel());
+							
 				}
+				/*for (Field parameter : ((Method)field ).getParameters() ) {
+					outputStream.write(parameter.getType()+" "+parameter.getLabel()+",");
+				}*/
 				outputStream.write(") { /*...*/ }");
 				outputStream.newLine();
 			}
