@@ -180,7 +180,7 @@ public class Classes implements java.io.Serializable {
 				String className = link.getClassB().getLabel();
 				String fieldName = "collectionOf"+className;
 
-				outputStream.write("\tList<"+className+"> fieldName;");
+				outputStream.write("\tList<"+className+"> "+fieldName+";");
 				outputStream.newLine();
 			}
 		}
