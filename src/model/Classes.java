@@ -199,11 +199,11 @@ public class Classes implements java.io.Serializable {
 				outputStream.write("\tpublic "+type+" "+name+"(");
 				if (!(((Method)field).getParameters().isEmpty() ) ) {
 					Iterator it = ((Method)field).getParameters().iterator();
-					while (it.hasNext()) {
-						Field param = (Field)it.next();
-						outputStream.write(param.getType()+" "+param.getLabel()+",");
-					}
 					Field param = (Field)it.next();
+					while (it.hasNext()) {
+						outputStream.write(param.getType()+" "+param.getLabel()+",");
+						param = (Field)it.next();
+					}
 					outputStream.write(param.getType()+" "+param.getLabel());
 							
 				}
