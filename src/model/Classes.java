@@ -176,6 +176,7 @@ public class Classes implements java.io.Serializable {
 
 	private void exportLinks(BufferedWriter outputStream) throws IOException {
 		for (Link link : getAllLinks() ) {
+			//If A->B is 1:Many
 			if (link.getCardinalityA() == Link.CARDINALITY_ONE && 
 					link.getClassA() == this &&
 					link.getCardinalityB() == Link.CARDINALITY_MANY
@@ -185,6 +186,26 @@ public class Classes implements java.io.Serializable {
 
 				outputStream.write("\tList<"+className+"> "+fieldName+";");
 				outputStream.newLine();
+			}
+			//If A->B is 1:1. NOTE: This will attach handles to both ends!
+			else if (link.getCardinalityA() == Link.CARDINALITY_ONE &&
+					link.getClassA() == this &&
+					link.getCardinalityB() == Link.CARDINALITY_ONE
+					) {
+				String className = link.getClassB().getLabel();
+				String fieldName = "handleTo"+className;
+				
+				outputStream.write("\t"+className+" "+fieldName+";");
+				outputStream.newLine();
+			}
+			//If A-> is Many:Many write a comment.
+			else if (link.getCardinalityA() == Link.CARDINALITY_MANY &&
+					link.getCardinalityB() == Link.CARDINALITY_MANY &&
+					link.getClassA() == this
+					) {
+				String className = link.getClassB().getLabel();
+				outputStream.write("\t/*Export feature does not support many:many assoc with class "+className+"*/");
+				
 			}
 		}
 
