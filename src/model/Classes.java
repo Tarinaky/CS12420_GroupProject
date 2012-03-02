@@ -215,11 +215,11 @@ public class Classes implements java.io.Serializable {
 		for (Field field : getAllFields() ) {
 			String type = field.getType();
 			String name = field.getLabel();
-			if (field.getClass() != new Method("").getClass() ) {
+			if (!(field instanceof Method) ) {
 				outputStream.write("\tprivate "+type+" "+name+";");
 				outputStream.newLine();
 			}
-			if (field.getClass() == new Method("").getClass() ) {
+			if (field instanceof Method ) {
 				outputStream.write("\tpublic "+type+" "+name+"(");
 				if (!(((Method)field).getParameters().isEmpty() ) ) {
 					Iterator<Field> it = ((Method)field).getParameters().iterator();
