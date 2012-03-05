@@ -7,6 +7,9 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		
 		GraphicalPanel graphicalPanel = new GraphicalPanel();
+		GraphicalMouseMotionListener mouseListener = new GraphicalMouseMotionListener(graphicalPanel);
+		graphicalPanel.addMouseListener(mouseListener);
+		graphicalPanel.addMouseMotionListener(mouseListener);
 		this.add(graphicalPanel, BorderLayout.CENTER);
 		
 		ToolsPanel toolsPanel = new ToolsPanel();

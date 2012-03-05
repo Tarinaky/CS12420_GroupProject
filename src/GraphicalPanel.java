@@ -24,6 +24,27 @@ public class GraphicalPanel extends JLayeredPane{
 		drawClasses();
 	}
 	
+	public void paintComponent(Graphics g) {
+		this.removeAll(); 
+		super.paintComponent(g);
+		drawClasses();
+	}
+	
+	public Classes findNearestClass(int x, int y) {
+		Classes c;
+		double minDist = Double.MAX_VALUE;
+		Classes minDistClass = null;
+		
+		for(Classes theClass: classes){
+			double distanceTo = theClass.distanceTo(x,y);
+			if(distanceTo < minDist) {
+				minDist = distanceTo;
+				minDistClass = theClass;
+			}
+		}
+		return minDistClass;
+	}
+	
 	private void addTestItems()
 	{
 		Classes testingClass = design.addClass(new Classes("Testing"));

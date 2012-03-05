@@ -240,5 +240,8 @@ public class Classes implements java.io.Serializable {
 		}
 	}
 
+	public double distanceTo(double x, double y) {
+		return Math.sqrt(Math.pow(position.x-x, 2) + Math.pow(position.x-y, 2));
+	}
 }
 

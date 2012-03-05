@@ -6,9 +6,7 @@ public class AboutFrame extends JFrame {
 		
 		this.setTitle("About");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setVisible(true);
-		this.setBounds()
-		
+		this.setVisible(true);		
 	}
 	
 }
