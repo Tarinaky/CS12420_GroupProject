@@ -64,3 +64,4 @@ public class DesignTest extends TestCase {
 		assertTrue(testDesign.getClass("renamedClass") == testClass);
 	}
 }
+

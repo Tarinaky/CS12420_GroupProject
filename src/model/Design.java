@@ -66,3 +66,4 @@ public class Design implements java.io.Serializable {
 		}
 	}
 }
+

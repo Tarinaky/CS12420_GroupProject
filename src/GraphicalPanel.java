@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
+import javax.swing.border.Border;
+
 import model.*;
 
 public class GraphicalPanel extends JLayeredPane{

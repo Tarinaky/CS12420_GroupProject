@@ -19,3 +19,4 @@ public class AccessModifier implements java.io.Serializable {
 	}
 
 }
+
