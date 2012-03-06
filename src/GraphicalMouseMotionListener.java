@@ -9,7 +9,9 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 	private GraphicalPanel graphicalPanel;
 	private ToolsPanel toolsPanel;
 	private Point startDrag;
-	public Classes selectedClass;
+	private Classes selectedClass;
+	private boolean updatedPanels = false;
+
 
 	GraphicalMouseMotionListener(GraphicalPanel graphicalPanel, ToolsPanel toolsPanel) {
 		this.graphicalPanel = graphicalPanel;
@@ -22,6 +24,12 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 	public void mouseDragged(MouseEvent e) {
 		if(this.selectedClass!=null)
 		{
+			if(!updatedPanels){
+				toolsPanel.removeAll();
+				toolsPanel.invalidate();
+				toolsPanel.loadClassSelectedButtons();
+				updatedPanels = true;
+			}
 			Point movedPoint = e.getPoint();
 			movedPoint.translate(startDrag.x, startDrag.y);
 			selectedClass.setPosition(movedPoint);
@@ -32,6 +40,8 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 	public void mousePressed(MouseEvent e) {
 	    this.selectedClass = graphicalPanel.findNearestClass(e.getX(),e.getY());
 	    this.startDrag = new Point(selectedClass.getPosition().x-e.getX(), selectedClass.getPosition().y-e.getY());
+	    graphicalPanel.setMouseSelectedClass(selectedClass);
+		updatedPanels = false;
 	}
 	
 	public void mouseEntered(MouseEvent e) {};
@@ -49,6 +59,7 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 			)
 				clickedClass = theClass;
 		}
+		graphicalPanel.setMouseSelectedClass(clickedClass);
 		toolsPanel.removeAll();
 		toolsPanel.invalidate();
 		if(clickedClass==null)
@@ -56,7 +67,7 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 		else
 			toolsPanel.loadClassSelectedButtons();
 		toolsPanel.repaint();
-		
+		graphicalPanel.repaint();
 	}
 
 	public void mouseReleased(MouseEvent e){

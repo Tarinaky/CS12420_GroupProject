@@ -39,6 +39,15 @@ public class ClassActionListener implements ActionListener {
 			        classes[0]);
 			design.removeClass(response);
 			graphicalPanel.repaint();
+		}
+		else if(actionCommand.equals("Add Method")) {
+				String response = JOptionPane.showInputDialog(null,
+						  "What is the name of your method?",
+						  "Please enter a name for the new method",
+						  JOptionPane.QUESTION_MESSAGE);
+				graphicalPanel.getMouseSelectedClass().addField(field, type, accessModifier)
+				design.addClass(new Classes(response));
+				graphicalPanel.repaint();
 		}else {
 			System.out.println("ERROR: Unexpected ActionCommand!");
 		}

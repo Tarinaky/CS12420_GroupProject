@@ -2,15 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import javax.swing.border.Border;
-
 import model.*;
 
 public class GraphicalPanel extends JLayeredPane{
 	private Design design = new Design();
 	private Collection<Classes> classes = design.getAllClasses();
-
+	private Classes mouseSelectedClass = null;
 	
+
+
 	GraphicalPanel()
 	{
 		this.setSize(900, 600);
@@ -20,6 +20,14 @@ public class GraphicalPanel extends JLayeredPane{
 		this.setLayout(null);
 		addTestItems();
 		drawClasses();
+	}
+
+	public void setMouseSelectedClass(Classes mouseSelectedClass) {
+		this.mouseSelectedClass = mouseSelectedClass;
+	}
+	
+	public Classes getMouseSelectedClass() {
+		return mouseSelectedClass;
 	}
 	
 	public Design getDesign()
@@ -179,7 +187,10 @@ public class GraphicalPanel extends JLayeredPane{
 		label.setOpaque(true);
 		label.setBackground(Color.white);
 		label.setForeground(Color.black);
-		label.setBorder(BorderFactory.createLineBorder(Color.black));
+		if (theClass == mouseSelectedClass)
+			label.setBorder(BorderFactory.createLineBorder(Color.black, 3));
+		else 
+			label.setBorder(BorderFactory.createLineBorder(Color.black));
 		int xPosition = theClass.getPosition().x-Math.round(label.getPreferredSize().width/2);
 		int yPosition = theClass.getPosition().y-Math.round(label.getPreferredSize().height/2);
 		//Width and height are divided by 2, rounded, then multiplied by 2, to ensure the number is even.
