@@ -15,5 +15,5 @@ tests: $(OBJ)
 objects: $(OBJ)
 
 clean:
-	rm -f *.class
+	rm -Rf *.class
 	

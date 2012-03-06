@@ -7,7 +7,7 @@ public class ToolsPanel extends JPanel{
 	private GraphicalPanel graphicalPanel;
 	private Design design;
 	private ClassActionListener toolsListener;
-	
+
 	ToolsPanel(Design design, GraphicalPanel graphicalPanel)
 	{
 		this.design = design;
@@ -21,11 +21,25 @@ public class ToolsPanel extends JPanel{
 	
 	public void loadNonSelectedButtons()
 	{
+		System.out.println("Showing non");
 		JButton addClassButton = new JButton("Add Class");
 		addClassButton.addActionListener(toolsListener);
 		this.add(addClassButton);
 		JButton removeClassButton = new JButton("Remove Class");
 		removeClassButton.addActionListener(toolsListener);
 		this.add(removeClassButton);
+		this.validate();
+	}
+	
+	public void loadClassSelectedButtons()
+	{
+		System.out.println("Showing class");
+		JButton addClassButton = new JButton("Add Method");
+		addClassButton.addActionListener(toolsListener);
+		this.add(addClassButton);
+		JButton removeClassButton = new JButton("Remove Method");
+		removeClassButton.addActionListener(toolsListener);
+		this.add(removeClassButton);
+		this.validate();
 	}
 }

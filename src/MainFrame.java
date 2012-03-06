@@ -9,13 +9,12 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		GraphicalPanel graphicalPanel = new GraphicalPanel();
-		GraphicalMouseMotionListener mouseListener = new GraphicalMouseMotionListener(graphicalPanel);
-		graphicalPanel.addMouseListener(mouseListener);
-		graphicalPanel.addMouseMotionListener(mouseListener);
 		this.add(graphicalPanel, BorderLayout.CENTER);
 		ToolsPanel toolsPanel = new ToolsPanel(graphicalPanel.getDesign(), graphicalPanel);
 		this.add(toolsPanel, BorderLayout.SOUTH);
-		
+		GraphicalMouseMotionListener mouseListener = new GraphicalMouseMotionListener(graphicalPanel, toolsPanel);
+		graphicalPanel.addMouseListener(mouseListener);
+		graphicalPanel.addMouseMotionListener(mouseListener);
 		//MenuBar//////////////////////////////////////////////////
 		JMenuBar menuBar = new JMenuBar();
 		this.add(menuBar, BorderLayout.NORTH);
