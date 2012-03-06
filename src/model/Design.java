@@ -17,7 +17,7 @@ public class Design implements java.io.Serializable {
 		/**
 		 * Add a class to the database.
 		 */
-		
+		add.setLayer(classes.size());
 		String key = add.getLabel();
 		classes.put(key, add);
 		return add;

@@ -36,10 +36,16 @@ public class GraphicalMouseMotionListener implements MouseMotionListener, MouseL
 
 	public void mouseExited(MouseEvent e){};
 
-	public void mouseClicked(MouseEvent e){};
+	public void mouseClicked(MouseEvent e){
+		System.out.println("Hello");
+	};
 
 	public void mouseReleased(MouseEvent e){
+		Point movedPoint = e.getPoint();
+		movedPoint.translate(startDrag.x, startDrag.y);
+		selectedClass.setPosition(movedPoint);
 		this.selectedClass = null;
+		graphicalPanel.repaint();
 	};
 
 }

@@ -1,18 +1,19 @@
 import javax.swing.*;
+
+import model.*;
+
 import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class MainFrame extends JFrame {
 	
 	public MainFrame() {
-		
 		GraphicalPanel graphicalPanel = new GraphicalPanel();
 		GraphicalMouseMotionListener mouseListener = new GraphicalMouseMotionListener(graphicalPanel);
 		graphicalPanel.addMouseListener(mouseListener);
 		graphicalPanel.addMouseMotionListener(mouseListener);
 		this.add(graphicalPanel, BorderLayout.CENTER);
-		
-		ToolsPanel toolsPanel = new ToolsPanel();
+		ToolsPanel toolsPanel = new ToolsPanel(graphicalPanel.getDesign(), graphicalPanel);
 		this.add(toolsPanel, BorderLayout.SOUTH);
 		
 		//MenuBar//////////////////////////////////////////////////

@@ -10,18 +10,12 @@ public class Classes implements java.io.Serializable {
 	 */
 
 	private String label;
+	private int layer; //The layer of the class on the JLayeredPanel
 	private Map<String,Link> links;
 	private String comment;
 	private Map<String,Field> fields;
 	private Point position; //The position of the class in the graphical panel
-
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setPosition(Point position) {
-		this.position = position;
-	}
+	private Dimension dimension; //Dimensions of the class, used for drawing links
 
 	public Classes(String label) {
 		/** Ctor creating a class with a given String label. The label is used to identify the Class within the design - each must be unique.
@@ -30,9 +24,25 @@ public class Classes implements java.io.Serializable {
 		links = new TreeMap<String,Link>();
 		comment = new String("");
 		fields = new TreeMap<String,Field>();
-		position = new Point(50, 50);
+		position = new Point(120, 120);
 	}
 
+	public Dimension getDimension() {
+		return dimension;
+	}
+
+	public void setDimension(Dimension dimension) {
+		this.dimension = dimension;
+	}
+
+	public Point getPosition() {
+		return position;
+	}
+
+	public void setPosition(Point position) {
+		this.position = position;
+	}
+	
 	public void rename(String label, Design design) {
 		/**
 		 * Rename a class and update the design to reflect it.
@@ -240,8 +250,16 @@ public class Classes implements java.io.Serializable {
 		}
 	}
 
-	public double distanceTo(double x, double y) {
-		return Math.sqrt(Math.pow(position.x-x, 2) + Math.pow(position.x-y, 2));
+	public double distanceTo(int x, int y) {
+		return Math.sqrt(Math.pow((position.x)-x, 2) + Math.pow((position.y-y), 2));
+	}
+	
+	public int getLayer() {
+		return layer;
+	}
+
+	public void setLayer(int layer) {
+		this.layer = layer;
 	}
 }
 

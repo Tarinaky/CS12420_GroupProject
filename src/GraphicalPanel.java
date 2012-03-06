@@ -7,14 +7,12 @@ import javax.swing.border.Border;
 import model.*;
 
 public class GraphicalPanel extends JLayeredPane{
-	
 	private Design design = new Design();
 	private Collection<Classes> classes = design.getAllClasses();
 
 	
 	GraphicalPanel()
 	{
-
 		this.setSize(900, 600);
 		this.setPreferredSize(new Dimension(900, 600));
 		this.setBackground(Color.green);
@@ -24,10 +22,16 @@ public class GraphicalPanel extends JLayeredPane{
 		drawClasses();
 	}
 	
+	public Design getDesign()
+	{
+		return design;
+	}
+	  
 	public void paintComponent(Graphics g) {
 		this.removeAll(); 
 		super.paintComponent(g);
 		drawClasses();
+		drawLinks(g);
 	}
 	
 	public Classes findNearestClass(int x, int y) {
@@ -62,6 +66,11 @@ public class GraphicalPanel extends JLayeredPane{
 		betterClass.addField(betterMethod);
 		betterClass.addField(new Field("username"), "String", AccessModifier.PUBLIC);
 		
+		
+		Link testLink = new Link("testLink", testingClass, betterClass, Link.CARDINALITY_ONE, Link.CARDINALITY_MANY);
+		testingClass.addLink(testLink);
+		betterClass.addLink(testLink);
+		
 	}
 	
 	public void drawGraphicalPane()
@@ -85,14 +94,58 @@ public class GraphicalPanel extends JLayeredPane{
 		
 	}
 	
-	public void drawClasses()
+	private void drawClasses()
 	{
-		int numObjects = 0;
 	   	for(Classes theClass: classes)
 	   	{
 			JLabel drawnClass = drawClass(theClass);
-			this.add(drawnClass, numObjects);
-			numObjects++;
+			this.add(drawnClass, theClass.getLayer());
+	   	}
+	}
+	
+	private Point getLinkLinePosition(Classes classA, Classes classB)
+	{
+		int xValue = (classA.getPosition().x)-(classB.getPosition().x);
+		int yValue = (classA.getPosition().y)-(classB.getPosition().y);
+		if(Math.abs(xValue)>Math.abs(yValue)){
+			int y = classA.getPosition().y;
+			if(xValue<0)
+				return new Point(classA.getPosition().x+classA.getDimension().width/2, y);
+			else
+				return new Point(classA.getPosition().x-classA.getDimension().width/2, y);
+		}else{
+			int x = classA.getPosition().x;
+			if(yValue<0)
+				return new Point(x, classA.getPosition().y+classA.getDimension().height/2);
+			else
+				return new Point(x, classA.getPosition().y-classA.getDimension().height/2);
+		}
+	}
+	
+	private void drawLink(Link theLink, Graphics g)
+	{
+		Point p1 = getLinkLinePosition(theLink.getClassA(), theLink.getClassB());
+		Point p2 = getLinkLinePosition(theLink.getClassB(), theLink.getClassA());
+		Graphics2D ig = (Graphics2D) g;
+		ig.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		ig.drawLine(p1.x, p1.y, p2.x, p2.y);
+
+	}
+	
+	private void drawLinks(Graphics g)
+	{
+	   	for(Classes theClass: classes)
+	   	{
+			for(Link theLink: theClass.getAllLinks())
+			{
+				if(theLink.getClassA()==theClass)
+				{
+					if(design.getAllClasses().contains(theLink.getClassB()))
+						drawLink(theLink, g);
+					else
+						theClass.removeLink(theLink.getLabel());
+				}
+			}
 	   	}
 	}
 	
@@ -127,8 +180,13 @@ public class GraphicalPanel extends JLayeredPane{
 		label.setBackground(Color.white);
 		label.setForeground(Color.black);
 		label.setBorder(BorderFactory.createLineBorder(Color.black));
-		label.setLocation(theClass.getPosition().x, theClass.getPosition().y);
-		label.setBounds(new Rectangle(theClass.getPosition(), new Dimension(label.getPreferredSize().width, label.getPreferredSize().height+5)));
+		int xPosition = theClass.getPosition().x-Math.round(label.getPreferredSize().width/2);
+		int yPosition = theClass.getPosition().y-Math.round(label.getPreferredSize().height/2);
+		//Width and height are divided by 2, rounded, then multiplied by 2, to ensure the number is even.
+		int width = Math.round(label.getPreferredSize().width/2)*2;
+		int height = Math.round((label.getPreferredSize().height+5)/2)*2;
+		theClass.setDimension(new Dimension(width, height));
+		label.setBounds(new Rectangle(new Point(xPosition, yPosition), theClass.getDimension()));
 		return label;
     }
 }

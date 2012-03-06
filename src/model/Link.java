@@ -19,6 +19,17 @@ public class Link implements java.io.Serializable {
 		 */
 		this.label = label;
 	}
+	
+	public Link(String label, Classes classA, Classes classB, int cardinalityA, int cardinalityB) {
+		/**
+		 * Create a new link.
+		 */
+		this.label = label;
+		this.classA = classA;
+		this.classB = classB;
+		this.cardinalityA = cardinalityA;
+		this.cardinalityB = cardinalityB;
+	}
 
 	public void rename(String label) {
 		/**
