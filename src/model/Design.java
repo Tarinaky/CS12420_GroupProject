@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import java.awt.Component;
 import java.io.*;
 
 public class Design implements java.io.Serializable {
@@ -65,5 +66,6 @@ public class Design implements java.io.Serializable {
 			classes.exportToFile(new File(folder,classes.getLabel()+".java") );
 		}
 	}
+	
 }
 

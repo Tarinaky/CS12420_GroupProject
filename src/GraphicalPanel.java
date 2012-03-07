@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.util.*;
 
@@ -15,9 +17,11 @@ public class GraphicalPanel extends JLayeredPane{
 	{
 		this.setSize(900, 600);
 		this.setPreferredSize(new Dimension(900, 600));
-		this.setBackground(Color.green);
+		this.setBackground(Color.LIGHT_GRAY);
 		this.setOpaque(true);
 		this.setLayout(null);
+		Border loweredBorder = BorderFactory.createLoweredBevelBorder();
+		this.setBorder(loweredBorder);
 		addTestItems();
 		drawClasses();
 	}

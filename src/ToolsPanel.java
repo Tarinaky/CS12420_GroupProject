@@ -12,7 +12,8 @@ public class ToolsPanel extends JPanel{
 	{
 		this.design = design;
 		this.graphicalPanel = graphicalPanel;
-		this.setPreferredSize(new Dimension(900, 80));
+		this.setSize(900, 200);
+		this.setPreferredSize(new Dimension(900, 38));
 		this.setBackground(Color.gray);
 		toolsListener = new ClassActionListener(design, graphicalPanel);
 		loadNonSelectedButtons();
@@ -31,45 +32,29 @@ public class ToolsPanel extends JPanel{
 	
 	public void loadClassSelectedButtons()
 	{
-		//Add Field Button
-		JButton addVariableButton = new JButton("Add Field");
-		addVariableButton.addActionListener(toolsListener);
-		this.add(addVariableButton);
+		JButton addClassButton = new JButton("Add Method");
+		addClassButton.addActionListener(toolsListener);
+		this.add(addClassButton);
 		
-		//Add Method Button
-		JButton addMethodButton = new JButton("Add Method");
-		addMethodButton.addActionListener(toolsListener);
-		this.add(addMethodButton);
+		JButton removeClassButton = new JButton("Remove Method");
+		removeClassButton.addActionListener(toolsListener);
+		this.add(removeClassButton);
 		
-		//Add Field to Method button
-		JButton addFieldToMethodButton = new JButton("Add Field to Method");
-		addFieldToMethodButton.addActionListener(toolsListener);
-		this.add(addFieldToMethodButton);
+		JButton addFieldButton = new JButton("Add Field");
+		addFieldButton.addActionListener(toolsListener);
+		this.add(addFieldButton);
 		
-		//Add Cardinality
+		JButton removeFieldButton = new JButton("Remove Field");
+		removeFieldButton.addActionListener(toolsListener);
+		this.add(removeFieldButton);
+		
+		JButton removeFieldtoMethodButton = new JButton("Add Field-to-Method");
+		removeFieldtoMethodButton.addActionListener(toolsListener);
+		this.add(removeFieldtoMethodButton);
+		
 		JButton addCardinalityButton = new JButton("Add Cardinality");
 		addCardinalityButton.addActionListener(toolsListener);
 		this.add(addCardinalityButton);
-		
-		//Remove Field Button
-		JButton removeVariableButton = new JButton("Remove Field");
-		removeVariableButton.addActionListener(toolsListener);
-		this.add(removeVariableButton);
-		
-		//Add Method Button
-		JButton removeMethodButton = new JButton("Remove Method");
-		removeMethodButton.addActionListener(toolsListener);
-		this.add(removeMethodButton);
-		
-		//Add Field to Method button
-		JButton removeFieldFromMethodButton = new JButton("Remove Field from Method");
-		removeFieldFromMethodButton.addActionListener(toolsListener);
-		this.add(removeFieldFromMethodButton);
-		
-		//Add Cardinality
-		JButton removeCardinalityButton = new JButton("Remove Cardinality");
-		removeCardinalityButton.addActionListener(toolsListener);
-		this.add(removeCardinalityButton);
 		
 		this.validate();
 	}

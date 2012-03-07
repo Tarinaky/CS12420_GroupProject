@@ -39,15 +39,55 @@ public class ClassActionListener implements ActionListener {
 			        classes[0]);
 			design.removeClass(response);
 			graphicalPanel.repaint();
+			
 		}
+		/*/////////////////////////////////////////////////////////
+		 * The code below uses the classes from JOFrame.java.
+		 * 
+		 * The method "joPanel" creates a JOptionPane for
+		 * the buttons "Add Method" and "Add Field".
+		 * 
+		 * The method "joList" creates a JOptionPane for
+		 * the buttons "Remove Method" and "Remove Field".
+		 *////////////////////////////////////////////////////////
+		
 		else if(actionCommand.equals("Add Method")) {
-				String response = JOptionPane.showInputDialog(null,
-						  "What is the name of your method?",
-						  "Please enter a name for the new method",
-						  JOptionPane.QUESTION_MESSAGE);
-				graphicalPanel.getMouseSelectedClass().addField(field, type, accessModifier)
-				design.addClass(new Classes(response));
-				graphicalPanel.repaint();
+			JOFrame joframe = new JOFrame();
+			joframe.joPanel("Add Method");
+			
+			System.out.println(actionCommand);
+			
+		}else if(actionCommand.equals("Remove Method")) {
+			String[] methods = new String[2];
+			JOFrame joframe = new JOFrame();
+			joframe.joList("Remove Method", methods);
+			
+			System.out.println(actionCommand);
+			
+		}else if(actionCommand.equals("Add Field")) {
+			JOFrame joframe = new JOFrame();
+			joframe.joPanel("Add Field");
+			
+			System.out.println(actionCommand);
+			
+		}else if(actionCommand.equals("Remove Field")) {
+			String[] fields = new String[2];
+			JOFrame joframe = new JOFrame();
+			joframe.joList("Remove Field", fields);
+			
+			System.out.println(actionCommand);
+			
+		}else if(actionCommand.equals("Add Field-to-Method")) {
+			String[] methods = new String[2];
+			JOFrame joframe = new JOFrame();
+			joframe.joFieldtoMethod("Add Field-to-Method", methods);
+			
+			System.out.println(actionCommand);
+			
+		}else if(actionCommand.equals("Add Cardinality")) {
+			
+			
+			
 		}else {
 			System.out.println("ERROR: Unexpected ActionCommand!");
 		}
