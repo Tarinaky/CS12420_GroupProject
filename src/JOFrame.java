@@ -73,7 +73,7 @@ public class JOFrame extends JPanel {
 	}
 	
 	public void joFieldtoMethod(String title) {
-		ArrayList<String> methodList = new ArrayList();
+		ArrayList<String> methodList = new ArrayList<String>();
 		for(Field theField: graphicalPanel.getMouseSelectedClass().getFields())
 		{
 			if(theField instanceof Method)
