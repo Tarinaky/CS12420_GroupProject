@@ -16,8 +16,9 @@ public class MainFrame extends JFrame {
 		graphicalPanel.addMouseListener(mouseListener);
 		graphicalPanel.addMouseMotionListener(mouseListener);
 		//MenuBar//////////////////////////////////////////////////
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		JMenuBar menuBar = new JMenuBar();
-		this.add(menuBar, BorderLayout.NORTH);
+		this.setJMenuBar(menuBar);
 		//File Menu
 		JMenu fileMenu = new JMenu("File");
 		JMenuItem exitItem = new JMenuItem("Exit", KeyEvent.VK_Q);

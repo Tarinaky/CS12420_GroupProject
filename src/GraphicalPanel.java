@@ -17,10 +17,9 @@ public class GraphicalPanel extends JLayeredPane{
 	{
 		this.setSize(900, 600);
 		this.setPreferredSize(new Dimension(900, 600));
-		this.setBackground(Color.LIGHT_GRAY);
 		this.setOpaque(true);
 		this.setLayout(null);
-		Border loweredBorder = BorderFactory.createLoweredBevelBorder();
+		Border loweredBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
 		this.setBorder(loweredBorder);
 		addTestItems();
 		drawClasses();

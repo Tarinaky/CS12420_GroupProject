@@ -14,7 +14,7 @@ public class ToolsPanel extends JPanel{
 		this.graphicalPanel = graphicalPanel;
 		this.setSize(900, 200);
 		this.setPreferredSize(new Dimension(900, 38));
-		this.setBackground(Color.gray);
+		this.setBackground(Color.ORANGE);
 		toolsListener = new ClassActionListener(design, graphicalPanel);
 		loadNonSelectedButtons();
 	}

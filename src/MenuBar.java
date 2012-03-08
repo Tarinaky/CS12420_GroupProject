@@ -5,7 +5,7 @@ import javax.swing.*;
 public class MenuBar {
 	
 	public MenuBar() {
-		
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		//MenuBar
 		JMenuBar menuBar = new JMenuBar();
 		//File Menu

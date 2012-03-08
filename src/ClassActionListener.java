@@ -23,8 +23,9 @@ public class ClassActionListener implements ActionListener {
 			String response = JOptionPane.showInputDialog(null,
 					  "What is the name of your class?",
 					  "Please enter a name for the class",
-					  JOptionPane.QUESTION_MESSAGE);
-			design.addClass(new Classes(response));
+					  JOptionPane.PLAIN_MESSAGE);
+			if(response!=null)
+				design.addClass(new Classes(response));
 			graphicalPanel.repaint();
 		}
 		else if(actionCommand.equals("Remove Class")) {
@@ -36,10 +37,11 @@ public class ClassActionListener implements ActionListener {
 				count++;
 			}
 			String response = (String) JOptionPane.showInputDialog(null, "Which class would you like to remove?",
-			        "Please choose a class to remove", JOptionPane.QUESTION_MESSAGE, null, 
+			        "Please choose a class to remove", JOptionPane.PLAIN_MESSAGE, null, 
 			        classes,
 			        classes[0]);
-			design.removeClass(response);
+			if(response!=null)
+				design.removeClass(response);
 			graphicalPanel.repaint();
 			
 		}
