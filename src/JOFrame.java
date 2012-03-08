@@ -1,12 +1,5 @@
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
-
-import com.sun.tools.javac.util.List;
-
 import model.*;
-
-import java.awt.FlowLayout;
-import java.awt.event.*;
 import java.util.ArrayList;
 /*
  * Class for JPanels and JOptionPanes of some button Functionalities.
@@ -145,7 +138,6 @@ public class JOFrame extends JPanel {
 	}
 	
 	public void joList(String title, String[] fieldList) {
-		
 		JComboBox list = new JComboBox(fieldList); //drop-down menu of fields
 		
 		//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!

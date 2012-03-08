@@ -1,4 +1,7 @@
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.*;
 import model.*;
 
@@ -57,12 +60,18 @@ public class ClassActionListener implements ActionListener {
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Remove Method")) {
-			String[] methods = new String[2];
+			ArrayList<String> methodList = new ArrayList<String>();
+			for(Field theField: graphicalPanel.getMouseSelectedClass().getFields())
+			{
+				if(theField instanceof Method)
+				{
+					methodList.add(theField.getLabel());
+				}
+			}
+			String[] listOfMethods = Arrays.copyOf(methodList.toArray(), methodList.toArray().length, String[].class);
 			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
-			joframe.joList("Remove Method", methods);
-			
-			System.out.println(actionCommand);
-			
+			joframe.joList("Remove Method",  listOfMethods);
+						
 		}else if(actionCommand.equals("Add Field")) {
 			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
 			joframe.joPanel("Field");
@@ -70,7 +79,15 @@ public class ClassActionListener implements ActionListener {
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Remove Field")) {
-			String[] fields = new String[2];
+			ArrayList<String> fieldList = new ArrayList<String>();
+			for(Field theField: graphicalPanel.getMouseSelectedClass().getFields())
+			{
+				if(!(theField instanceof Method))
+				{
+					fieldList.add(theField.getLabel());
+				}
+			}
+			String[] fields = Arrays.copyOf(fieldList.toArray(), fieldList.toArray().length, String[].class);
 			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
 			joframe.joList("Remove Field", fields);
 			
