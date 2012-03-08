@@ -111,7 +111,6 @@ public class GraphicalPanel extends JLayeredPane{
 	   	{
 			JLabel drawnClass = drawClass(theClass);
 			this.add(drawnClass, theClass.getLayer());
-			this.setLayer(drawnClass, theClass.getLayer());
 	   	}
 	}
 	

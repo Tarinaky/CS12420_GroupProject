@@ -34,7 +34,7 @@ public class JOFrame extends JPanel {
 		panel.add(nameField);
 				
 		//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!
-		int result = JOptionPane.showConfirmDialog(null, panel, "Add " + title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+		int result = JOptionPane.showConfirmDialog(graphicalPanel, panel, "Add " + title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		
 		if(result == JOptionPane.OK_OPTION) {
 			/* Output of the Combobox and textFields.
@@ -93,7 +93,7 @@ public class JOFrame extends JPanel {
 			panel.add(nameField);
 			
 			//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!
-			int result = JOptionPane.showConfirmDialog(null, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+			int result = JOptionPane.showConfirmDialog(graphicalPanel, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 			
 			if(result == JOptionPane.OK_OPTION) {
 				/* Output of the Combobox and textFields.
@@ -108,7 +108,7 @@ public class JOFrame extends JPanel {
 					selectedMethod.addParameter(fieldToAdd);
 					graphicalPanel.repaint();
 				}else{
-					JOptionPane.showMessageDialog(this, "You already have a parameter named " + nameField.getText() + " for " 
+					JOptionPane.showMessageDialog(graphicalPanel, "You already have a parameter named " + nameField.getText() + " for " 
 							+ methodlist.getSelectedItem().toString(), "Error", JOptionPane.ERROR_MESSAGE);
 				}
 			}
@@ -126,7 +126,7 @@ public class JOFrame extends JPanel {
 		 * 
 		 */
 		//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!
-		int result = JOptionPane.showConfirmDialog(null, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+		int result = JOptionPane.showConfirmDialog(graphicalPanel, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if(result == JOptionPane.OK_OPTION) {
 			/*
 			 * 
@@ -141,7 +141,7 @@ public class JOFrame extends JPanel {
 		JComboBox list = new JComboBox(fieldList); //drop-down menu of fields
 		
 		//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!
-		int result = JOptionPane.showConfirmDialog(null, list, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+		int result = JOptionPane.showConfirmDialog(graphicalPanel, list, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
 		if(result == JOptionPane.OK_OPTION) {
 			/*
 			 * 

@@ -8,15 +8,6 @@ public class MenuActionListener implements ActionListener {
 		
 		String mAction = e.getActionCommand();
 		
-		if(mAction.equals("Exit")){
-			System.exit(0);
-		}
-		if(mAction.equals("Export to Code")){
-			JOptionPane.showMessageDialog(null, "Export Code",mAction, JOptionPane.PLAIN_MESSAGE);
-		}
-		if(mAction.equals("About")){
-			JOptionPane.showMessageDialog(null, "CS124 Group Project",mAction, JOptionPane.PLAIN_MESSAGE);
-		}
 		
 	}
 	
