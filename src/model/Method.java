@@ -1,8 +1,6 @@
 package model;
 import java.util.*;
 
-import apple.laf.JRSUIUtils.Tree;
-
 public class Method extends Field implements java.io.Serializable {
 	/**
 	 * This class is the special case of a field that is a method.
