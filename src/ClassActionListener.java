@@ -1,6 +1,5 @@
 import java.awt.event.*;
 import javax.swing.*;
-
 import model.*;
 
 public class ClassActionListener implements ActionListener {
@@ -52,38 +51,35 @@ public class ClassActionListener implements ActionListener {
 		 *////////////////////////////////////////////////////////
 		
 		else if(actionCommand.equals("Add Method")) {
-			JOFrame joframe = new JOFrame();
-			joframe.joPanel("Add Method");
+			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
+			joframe.joPanel("Method");
 			
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Remove Method")) {
 			String[] methods = new String[2];
-			JOFrame joframe = new JOFrame();
+			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
 			joframe.joList("Remove Method", methods);
 			
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Add Field")) {
-			JOFrame joframe = new JOFrame();
-			joframe.joPanel("Add Field");
+			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
+			joframe.joPanel("Field");
 			
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Remove Field")) {
 			String[] fields = new String[2];
-			JOFrame joframe = new JOFrame();
+			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
 			joframe.joList("Remove Field", fields);
 			
 			System.out.println(actionCommand);
 			
 		}else if(actionCommand.equals("Add Field-to-Method")) {
 			String[] methods = new String[2];
-			JOFrame joframe = new JOFrame();
-			joframe.joFieldtoMethod("Add Field-to-Method", methods);
-			
-			System.out.println(actionCommand);
-			
+			JOFrame joframe = new JOFrame(this.design, this.graphicalPanel);
+			joframe.joFieldtoMethod("Add Field-to-Method");			
 		}else if(actionCommand.equals("Add Cardinality")) {
 			
 			

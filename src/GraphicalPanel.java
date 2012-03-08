@@ -161,6 +161,20 @@ public class GraphicalPanel extends JLayeredPane{
 	   	}
 	}
 	
+	private String getMethodsFieldsHTML(Field method)
+	{
+		String returnHTML = "";
+		Method theMethod = (Method) method;
+		for(Field theField: theMethod.getParameters())
+		{
+			returnHTML = returnHTML + theField.getLabel() + " : " + theField.getType() + ", ";
+		}
+		if(returnHTML.length() > 0)
+			return returnHTML.substring(0, returnHTML.length()-2);
+		else
+			return "";
+	}
+	
 	private String getClassesFeildsHTML(Classes theClass)
 	{
 		String returnMethods = "";
@@ -169,12 +183,12 @@ public class GraphicalPanel extends JLayeredPane{
 		{
 			if(field instanceof Method)
 			{
-				returnMethods += "<p style=\"padding: 0 10px;\">" + getSymbolFromAccessModifier(field.getAccessModifier()) 
-						+ " " + field.getLabel() + "(): " + field.getType() + "</p>";
+				returnMethods += "<p style=\"margin: 0 10px; white-space: nowrap;\">" + getSymbolFromAccessModifier(field.getAccessModifier()) 
+						+ " " + field.getLabel() + "(" + getMethodsFieldsHTML(field) + ") : " + field.getType() + "</p>";
 			}
 			else
 			{
-				returnParameters += "<p style=\"padding: 0 10px;\">" + getSymbolFromAccessModifier(field.getAccessModifier())
+				returnParameters += "<p style=\"margin: 0 10px; white-space: nowrap;\">" + getSymbolFromAccessModifier(field.getAccessModifier())
 						+ " " + field.getLabel() + " : " + field.getType() + "</p>";
 			}
 		}
@@ -182,7 +196,7 @@ public class GraphicalPanel extends JLayeredPane{
 	}
 	
     private JLabel drawClass(Classes theClass) {
-    	String labelHtml = "<html><div style=\"text-align: center; padding: 0 35px; width:100%; display: inline;\">"
+    	String labelHtml = "<html><div style=\"text-align: center; margin: 0 35px; width:100%; display: inline;\">"
     						+ theClass.getLabel() + "</div><hr width=\"100%\">";
     	labelHtml += getClassesFeildsHTML(theClass);
 		JLabel label = new JLabel(labelHtml + "<p></html>");
