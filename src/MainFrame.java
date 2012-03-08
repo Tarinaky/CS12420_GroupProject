@@ -18,7 +18,9 @@ public class MainFrame extends JFrame {
 		//MenuBar//////////////////////////////////////////////////
 		
 		if (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0)
+		{
 			System.setProperty("apple.laf.useScreenMenuBar", "true");
+		}
 		JMenuBar menuBar = new JMenuBar();
 		this.setJMenuBar(menuBar);
 		//File Menu
