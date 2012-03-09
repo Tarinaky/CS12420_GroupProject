@@ -1,7 +1,10 @@
 import javax.swing.*;
 
 import model.*;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 /*
  * Class for JPanels and JOptionPanes of some button Functionalities.
  * e.g. Add Method, Add Field
@@ -119,23 +122,60 @@ public class JOFrame extends JPanel {
 	}
 	
 	public void joCardinality(String title) {
-		//Classes selectedClass = 
+		String[] cardinality = {"*", "1"};
+		Classes selectedClass = graphicalPanel.getMouseSelectedClass();
 		JPanel panel = new JPanel();
+		JLabel label = new JLabel(selectedClass.getLabel());
+		JComboBox listA = new JComboBox(cardinality);
+		JLabel labelArrow = new JLabel(" -> ");
+		JComboBox listB = new JComboBox(cardinality);
+		ArrayList<String> classList = new ArrayList<String>();
+		for(Classes itrClass: design.getAllClasses())
+		{
+			if(itrClass.getLabel()!=selectedClass.getLabel())
+				classList.add(itrClass.getLabel());
+		}
+		String[] listOfClasses = Arrays.copyOf(classList.toArray(), classList.toArray().length, String[].class);
+		JComboBox classes = new JComboBox(listOfClasses);
+				
+		panel.add(label);
+		panel.add(listA);
+		panel.add(labelArrow);
+		panel.add(listB);
+		panel.add(classes);
 		/*
 		 * 
 		 * panel contents of the JOptionPane.
 		 * 
 		 */
 		//!!!!!!!!!!although result is int, textfield values are returned as String!!!!!!!!!!!!
-		int result = JOptionPane.showConfirmDialog(graphicalPanel, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
-		if(result == JOptionPane.OK_OPTION) {
-			/*
-			 * 
-			 * use .getText(); method to retrieve values from panel contents.
-			 * e.g. textfield.getText();
-			 * 
-			 */
+		if(!classList.isEmpty()){
+			int result = JOptionPane.showConfirmDialog(graphicalPanel, panel, title, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+			if(result == JOptionPane.OK_OPTION) {
+				/*
+				 * 
+				 * use .getText(); method to retrieve values from panel contents.
+				 * e.g. textfield.getText();
+				 * 
+				 */
+			
+				Link testLink = new Link(new Random().toString(), selectedClass, design.getClass(classes.getSelectedItem().toString()), getCardinality(listA.getSelectedItem().toString()), getCardinality(listB.getSelectedItem().toString()));
+				selectedClass.addLink(testLink);
+				design.getClass(classes.getSelectedItem().toString()).addLink(testLink);
+				graphicalPanel.repaint();
+			}
+		}else{
+			JOptionPane.showMessageDialog(this, "You don't have any other classes.", "Error", JOptionPane.ERROR_MESSAGE);
+
 		}
+	}
+	
+	private int getCardinality(String symbol)
+	{
+		if(symbol.equals("*"))
+			return Link.CARDINALITY_MANY;
+		return Link.CARDINALITY_ONE;
+				
 	}
 	
 	public void joList(String title, String nlabel, String[] fieldList) {

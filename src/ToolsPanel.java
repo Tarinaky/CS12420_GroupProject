@@ -26,10 +26,8 @@ public class ToolsPanel extends JPanel{
 	{
 		JButton addClassButton = new JButton("Add Class");
 		addClassButton.addActionListener(toolsListener);
-		//this.add(addClassButton);
 		JButton removeClassButton = new JButton("Remove Class");
 		removeClassButton.addActionListener(toolsListener);
-		//this.add(removeClassButton);
 		
 		JPanel addingPanel = new JPanel();
 		addingPanel.setBackground(Color.orange);
@@ -115,7 +113,7 @@ public class ToolsPanel extends JPanel{
 		removingPanel.add(removeClassButton);
 		removingPanel.add(removeFieldButton);
 		removingPanel.add(removeFieldToMethodButton);
-		removingPanel.add(removeCardinalityButton);
+		//removingPanel.add(removeCardinalityButton);
 		
 		JPanel editPanel = new JPanel();
 		editPanel.setBackground(Color.orange);
@@ -126,7 +124,7 @@ public class ToolsPanel extends JPanel{
 		editPanel.add(editFieldButton);
 		editPanel.add(editMethodButton);
 		editPanel.add(editFieldToMethodButton);
-		editPanel.add(editCardinalityButton);
+		//editPanel.add(editCardinalityButton);
 		
 		this.add(addingPanel);
 		this.add(editPanel);
