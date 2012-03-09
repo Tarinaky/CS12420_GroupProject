@@ -1,9 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
-
 import java.awt.*;
 import java.util.*;
-
 import model.*;
 
 public class GraphicalPanel extends JLayeredPane{
@@ -114,35 +112,55 @@ public class GraphicalPanel extends JLayeredPane{
 	   	}
 	}
 	
-	private Point getLinkLinePosition(Classes classA, Classes classB)
+	private Point getLinkLinePosition(Classes classA, Classes classB, int cardinality)
 	{
 		int xValue = (classA.getPosition().x)-(classB.getPosition().x);
 		int yValue = (classA.getPosition().y)-(classB.getPosition().y);
 		if(Math.abs(xValue)>Math.abs(yValue)){
 			int y = classA.getPosition().y;
-			if(xValue<0)
+			if(xValue<0){
+				drawCardinality(new Point(classA.getPosition().x+(classA.getDimension().width/2) + 10, y + 10), cardinality);
 				return new Point(classA.getPosition().x+classA.getDimension().width/2, y);
-			else
+			}else{
+				drawCardinality(new Point(classA.getPosition().x-(classA.getDimension().width/2) - 14, y + 10), cardinality);
 				return new Point(classA.getPosition().x-classA.getDimension().width/2, y);
+				}
 		}else{
 			int x = classA.getPosition().x;
-			if(yValue<0)
+			if(yValue<0){
+				drawCardinality(new Point(x+10, (classA.getPosition().y+classA.getDimension().height/2)+10), cardinality);
 				return new Point(x, classA.getPosition().y+classA.getDimension().height/2);
-			else
+			}else{
+				drawCardinality(new Point(x+10, (classA.getPosition().y-classA.getDimension().height/2)-14), cardinality);
 				return new Point(x, classA.getPosition().y-classA.getDimension().height/2);
+			}
 		}
 	}
 	
 	private void drawLink(Link theLink, Graphics g)
 	{
-		Point p1 = getLinkLinePosition(theLink.getClassA(), theLink.getClassB());
-		Point p2 = getLinkLinePosition(theLink.getClassB(), theLink.getClassA());
+		Point p1 = getLinkLinePosition(theLink.getClassA(), theLink.getClassB(), theLink.getCardinalityA());
+		Point p2 = getLinkLinePosition(theLink.getClassB(), theLink.getClassA(), theLink.getCardinalityB());
 		Graphics2D ig = (Graphics2D) g;
 		ig.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		ig.drawLine(p1.x, p1.y, p2.x, p2.y);
 
 	}
 	
+	private void drawCardinality(Point position, int cardinality)
+	{
+		String labelText;
+		if(cardinality==Link.CARDINALITY_MANY)
+			labelText = "*";
+		else
+			labelText = "1";
+		JLabel label = new JLabel(labelText);
+		label.setVerticalAlignment(JLabel.TOP);
+		label.setOpaque(true);
+		label.setBounds(new Rectangle(position, label.getPreferredSize()));
+		this.add(label);
+	}
+
 	private void drawLinks(Graphics g)
 	{
 	   	for(Classes theClass: classes)

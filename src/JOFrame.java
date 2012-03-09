@@ -119,7 +119,7 @@ public class JOFrame extends JPanel {
 	}
 	
 	public void joCardinality(String title) {
-		
+		//Classes selectedClass = 
 		JPanel panel = new JPanel();
 		/*
 		 * 
