@@ -7,6 +7,8 @@ import java.io.IOException;
 import model.*;
 
 import javax.swing.*;
+
+import sun.tools.java.ClassNotFound;
 /*
  * ActionListeners were added inside the MenuBar.java file
  * because of difficulties in dealing with the 
@@ -16,17 +18,24 @@ public class MenuBar extends JMenuBar {
 	
 	private GraphicalPanel gp;
 	private JFileChooser fc = new JFileChooser();
+	private JFileChooser fco = new JFileChooser();
+	private JFileChooser fcs = new JFileChooser();
 
-	
 	public MenuBar(GraphicalPanel graphicp) {
 		
 		this.gp = graphicp;
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		
+		fco.setFileSelectionMode(JFileChooser.OPEN_DIALOG);
+		fcs.setFileSelectionMode(JFileChooser.SAVE_DIALOG);
+
 		//File Menu
 		JMenu fileMenu = new JMenu("File");
+		
+		JMenuItem openItem = new JMenuItem("Open");
+		JMenuItem saveItem = new JMenuItem("Save");
 		JMenuItem exitItem = new JMenuItem("Exit", KeyEvent.VK_Q);
 		JMenuItem exportItem = new JMenuItem("Export to Code");
+
 		//Help Menu
 		JMenu helpMenu = new JMenu("Help");
 		JMenuItem aboutItem = new JMenuItem("About");
@@ -34,6 +43,8 @@ public class MenuBar extends JMenuBar {
 		this.add(fileMenu);
 		this.add(helpMenu);
 		
+		fileMenu.add(openItem);
+		fileMenu.add(saveItem);
 		fileMenu.add(exportItem);
 		fileMenu.add(exitItem);
 		
@@ -51,6 +62,20 @@ public class MenuBar extends JMenuBar {
 
 			public void actionPerformed(ActionEvent e) {
 				logistics("Export to Code",fc,gp);
+			}
+			
+		});
+		openItem.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				logistics("Open",fco,gp);
+			}
+			
+		});
+		saveItem.addActionListener(new ActionListener(){
+
+			public void actionPerformed(ActionEvent e) {
+				logistics("Save",fcs,gp);
 			}
 			
 		});
@@ -82,6 +107,53 @@ public class MenuBar extends JMenuBar {
 				File file = fc.getSelectedFile();
 				try{
 				gp.getDesign().exportToFolder(file);
+				}catch(IOException ex){
+				}
+				//Replace code below ("System.out...") for file export methods.
+				//System.out.println(file.getName() + " stored");
+			}else{
+				System.out.println("Save/ChooseFile cancelled by user");
+			}
+			
+		}
+		if(mAction.equals("Open")){
+			/*
+			 * Opens a FileChooser Dialog box allowing the user
+			 * to browse through directories and save their 
+			 * file.
+			 */
+			
+			int returnVal = fco.showSaveDialog(MenuBar.this);
+			if(returnVal == JFileChooser.APPROVE_OPTION){
+				
+				File file = fco.getSelectedFile();
+				try{
+					Design newDesign = gp.getDesign();
+					newDesign = Design.loadFrom(file.getAbsolutePath().toString());
+					gp.repaint();
+				}catch(IOException ex){
+				}catch(ClassNotFoundException ex){
+				}
+				//Replace code below ("System.out...") for file export methods.
+				//System.out.println(file.getName() + " stored");
+			}else{
+				System.out.println("Save/ChooseFile cancelled by user");
+			}
+			
+		}
+		if(mAction.equals("Save")){
+			/*
+			 * Opens a FileChooser Dialog box allowing the user
+			 * to browse through directories and save their 
+			 * file.
+			 */
+			
+			int returnVal = fcs.showSaveDialog(MenuBar.this);
+			if(returnVal == JFileChooser.APPROVE_OPTION){
+				
+				File file = fcs.getSelectedFile();
+				try{
+				gp.getDesign().saveTo(file.getAbsolutePath().toString());
 				}catch(IOException ex){
 				}
 				//Replace code below ("System.out...") for file export methods.

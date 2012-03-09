@@ -19,7 +19,6 @@ public class GraphicalPanel extends JLayeredPane{
 		this.setLayout(null);
 		Border loweredBorder = BorderFactory.createMatteBorder(0, 0, 1, 0, Color.BLACK);
 		this.setBorder(loweredBorder);
-		addTestItems();
 		drawClasses();
 	}
 
@@ -56,30 +55,6 @@ public class GraphicalPanel extends JLayeredPane{
 			}
 		}
 		return minDistClass;
-	}
-	
-	private void addTestItems()
-	{
-		Classes testingClass = design.addClass(new Classes("Testing"));
-		testingClass.setPosition(new Point(400,100)); //Move it to a different posiiton
-		Method newMethod = new Method("addUser");
-		newMethod.setType("void");
-		newMethod.setAccessModifier(AccessModifier.PUBLIC);
-		testingClass.addField(newMethod);
-		
-		
-		Classes betterClass = design.addClass(new Classes("Better"));
-		Method betterMethod = new Method("addUser");
-		betterMethod.setType("void");
-		betterMethod.setAccessModifier(AccessModifier.PRIVATE);
-		betterClass.addField(betterMethod);
-		betterClass.addField(new Field("username"), "String", AccessModifier.PUBLIC);
-		
-		
-		Link testLink = new Link("testLink", testingClass, betterClass, Link.CARDINALITY_ONE, Link.CARDINALITY_MANY);
-		testingClass.addLink(testLink);
-		betterClass.addLink(testLink);
-		
 	}
 	
 	public void drawGraphicalPane()
