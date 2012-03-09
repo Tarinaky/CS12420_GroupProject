@@ -13,6 +13,7 @@ import javax.swing.*;
 public class MenuBar extends JMenuBar {
 	
 	private GraphicalPanel gp;
+	private JFileChooser fc = new JFileChooser();
 	
 	public void graphicalPanel(GraphicalPanel graphicp){
 		this.gp = graphicp;
@@ -20,7 +21,7 @@ public class MenuBar extends JMenuBar {
 	
 	public MenuBar() {
 		
-		final JFileChooser fc = new JFileChooser();
+		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		//File Menu
 		JMenu fileMenu = new JMenu("File");
@@ -77,11 +78,13 @@ public class MenuBar extends JMenuBar {
 			
 			int returnVal = fc.showSaveDialog(MenuBar.this);
 			if(returnVal == JFileChooser.APPROVE_OPTION){
+				
 				File file = fc.getSelectedFile();
+				
 				//Replace code below ("System.out...") for file export methods.
 				System.out.println(file.getName() + " stored");
 			}else{
-				System.out.println("Save cancelled by user");
+				System.out.println("Save/ChooseFile cancelled by user");
 			}
 			
 		}

@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 public class MainFrame extends JFrame {
 	
 	public MainFrame() {
+		if (System.getProperty("os.name").toLowerCase().indexOf("mac") >= 0)
+			System.setProperty("apple.laf.useScreenMenuBar", "true");
 		GraphicalPanel graphicalPanel = new GraphicalPanel();
 		this.add(graphicalPanel, BorderLayout.CENTER);
 		ToolsPanel toolsPanel = new ToolsPanel(graphicalPanel.getDesign(), graphicalPanel);
@@ -16,9 +18,7 @@ public class MainFrame extends JFrame {
 		graphicalPanel.addMouseListener(mouseListener);
 		graphicalPanel.addMouseMotionListener(mouseListener);
 		MenuBar menuBar = new MenuBar();
-		menuBar.graphicalPanel(graphicalPanel);
-		this.add(menuBar, BorderLayout.NORTH);
-
+		this.setJMenuBar(menuBar);
 		this.setTitle("Class Builder - CS124 Group Project");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocation(60, 60);

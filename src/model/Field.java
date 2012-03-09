@@ -28,6 +28,14 @@ public class Field implements java.io.Serializable {
 		classes.addField(this);
 	}
 
+	public void rename(String label) {
+		/**
+		 * Rename the field
+		 */
+		String oldLabel = this.label;
+		this.label = label;
+	}
+	
 	public void setAccessModifier(int accessModifier) {
 		/**
 		 * Set this field's access modifier.

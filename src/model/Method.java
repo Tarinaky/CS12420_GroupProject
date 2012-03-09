@@ -37,6 +37,23 @@ public class Method extends Field implements java.io.Serializable {
 		 */
 		parameters.put(parameter.getLabel(), parameter);
 	}
+	
+	public void removeParameter(String label)
+	{
+		/**
+		 * Remove a single parameter from this method's current parameter list.
+		 */
+		parameters.remove(label);
+	}
+	
+	public void renameParameter(String oldLabel, Field parameter)
+	{
+		/**
+		 * Remove a single parameter from this method's current parameter list.
+		 */
+		removeParameter(oldLabel);
+		parameters.put(parameter.getLabel(), parameter);
+	}
 
 }
 
