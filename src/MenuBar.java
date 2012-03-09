@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.IOException;
+import model.*;
 
 import javax.swing.*;
 /*
@@ -14,13 +16,11 @@ public class MenuBar extends JMenuBar {
 	
 	private GraphicalPanel gp;
 	private JFileChooser fc = new JFileChooser();
+
 	
-	public void graphicalPanel(GraphicalPanel graphicp){
-		this.gp = graphicp;
-	}
-	
-	public MenuBar() {
+	public MenuBar(GraphicalPanel graphicp) {
 		
+		this.gp = graphicp;
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		
 		//File Menu
@@ -80,9 +80,12 @@ public class MenuBar extends JMenuBar {
 			if(returnVal == JFileChooser.APPROVE_OPTION){
 				
 				File file = fc.getSelectedFile();
-				
+				try{
+				gp.getDesign().exportToFolder(file);
+				}catch(IOException ex){
+				}
 				//Replace code below ("System.out...") for file export methods.
-				System.out.println(file.getName() + " stored");
+				//System.out.println(file.getName() + " stored");
 			}else{
 				System.out.println("Save/ChooseFile cancelled by user");
 			}

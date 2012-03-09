@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
 		GraphicalMouseMotionListener mouseListener = new GraphicalMouseMotionListener(graphicalPanel, toolsPanel);
 		graphicalPanel.addMouseListener(mouseListener);
 		graphicalPanel.addMouseMotionListener(mouseListener);
-		MenuBar menuBar = new MenuBar();
+		MenuBar menuBar = new MenuBar(graphicalPanel);
 		this.setJMenuBar(menuBar);
 		this.setTitle("Class Builder - CS124 Group Project");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
