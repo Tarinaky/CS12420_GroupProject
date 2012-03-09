@@ -1,6 +1,21 @@
 /**
  * @hidden
  */
+class Writer {}
+
+/**
+ * @hidden
+ */
+class File {}
+
+/**
+ * @hidden
+ */
+class Dimension {}
+
+/**
+ * @hidden
+ */
 class Map<K,V> {}
 
 /**
@@ -27,8 +42,12 @@ class Classes {
 	private String comment;
 	private Map<String,Field> fields;
 	private Point position;
+	private Dimension dimension;
 
 	public Classes(String label) {}
+
+	public Dimension getDimension() {}
+	public void setDimension(Dimension dimension) {}
 	
 	public Point getPosition() {}
 	public void setPosition(Point position) {}
@@ -46,7 +65,17 @@ class Classes {
 	public void getField(String label) {}
 	public void removeField(String label) {}
 	
-	public Collection<Field> getAllFields() {}
+	public Collection<Field> getFields() {}
+
+	private void exportToFile(File file) {}
+	private void exportInheritance(Writer output) {}
+	private void exportLinks(Writer output) {}
+	private void exportFields(Writer output) {}
+
+	public double distanceTo(int x, int y) {}
+	public int getLayer() {}
+	public void setLayer() {}
+
 }
 
 /**
@@ -123,6 +152,8 @@ class Design {
 	public Classes getClass(String label) {}
 	
 	public Collection<Classes> getAllClasses() {}
+
+	public void exportToFolder(File folder) {}
 	
 	public void saveTo(String filename) {}
 	/**
@@ -135,7 +166,7 @@ class Design {
  * @opt all
  */
 class Method extends Field {
-	private List<Field> parameters;
+	private Map<String,Field> parameters;
 	
 	public void setParameters(List<Field> parameters) {}
 	public List<Field> getParameters() {}
